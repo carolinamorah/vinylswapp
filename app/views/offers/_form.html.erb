@@ -1,0 +1,41 @@
+<%= form_with(model: [@vinyl, offer], local: true) do |form| %>
+  <% if offer.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(offer.errors.count, "error") %> prohibited this offer from being saved:</h2>
+
+      <ul>
+      <% offer.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :offeredvinyl_id, "Offered Vinyl" %>
+    <%= form.select :offeredvinyl_id, options_for_select(@offered_vinyl)%>   
+  </div>
+
+  <div class="field">
+    <%= form.label "Chosen Vinyl:  "%>
+    <%= @vinyl.title + ' - ' + @vinyl.author%>
+  </div>
+
+  <div class="field">
+    <%= form.label :owner_id, 'Owner: ' %>
+    <%= @vinyl.user.collectionist_name %>
+  </div>
+
+ <div class="field">
+   <%= form.hidden_field :owner_id, value: @offer.owner_id %>
+ </div>
+
+  <div class="field">
+    <%= form.label :end_date %>
+    <%= form.datetime_select :end_date %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

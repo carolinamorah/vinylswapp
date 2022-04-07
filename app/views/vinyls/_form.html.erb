@@ -1,0 +1,72 @@
+<%= form_with(model: vinyl, local: true) do |form| %>
+  <% if vinyl.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(vinyl.errors.count, "error") %> prohibited this vinyl from being saved:</h2>
+
+      <ul>
+      <% vinyl.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label "Vinyl image" %>
+    <%= form.file_field :image %>
+  </div>
+
+  <div class="field">
+    <%= form.label :title %><br />
+    <%= form.text_field :title, autofocus: true, :style => "width:400px" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :author %><br />
+    <%= form.text_field :author, :style => "width:400px"%>
+  </div>
+
+  <div class="field">
+    <%= form.label :released_date %><br />
+    <%= form.date_select :released_date, start_year: 1960, end_year: 2022 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :format %><br />
+    <%= form.text_field :format, :style => "width:400px"%>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %><br />
+    <%= form.text_area :description, :style => "width:400px" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :status %><br />
+    <%= form.select(:status, Vinyl.statuses.keys.to_a) %> 
+  </div>
+
+  <div class="field">
+    <%= form.label :condition %><br />
+    <%= form.select(:condition, options_for_select(['new','used']))%>
+  </div>
+
+  <div class="field>
+    <%= form.hidden_field :user_id %>        
+  </div>
+<br>
+  <div class="field">
+    <%= form.label :genre %><br />
+    <% genre_array = Category.all.map {|c| [c.genre, c.id]} %>
+    <%= form.select :genre, options_for_select(genre_array), {}, :style => "width:400px", :multiple => true%>
+  </div>
+  <br>
+  <br>    
+
+  <div class="actions">
+    <%= form.submit class: "btn btn-outline-dark btn-sm"  %>
+  </div>
+<% end %>
+
+
+

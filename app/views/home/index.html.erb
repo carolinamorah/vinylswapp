@@ -1,0 +1,49 @@
+<section class="page-section clearfix">
+  <div class="container">
+    <div class="intro">
+      <%= image_tag asset_path("caezaevinilo.jpg"), class: "intro-img img-fluid mb-3 shadow-lg mb-lg-0 rounded", alt: "intro image" %>
+      <div class="intro-text left-0 text-center bg-faded p-5 rounded">
+        <h2 class="section-heading mb-4">
+          <span class="section-heading-upper">For Free</span>
+          <span class="section-heading-lower">Upload Your Vinyl Collection</span>
+        </h2>
+        <p class="mb-3"><%= Faker::Lorem.sentence(word_count: 30) %></p>
+        <div class="intro-button mx-auto">
+          <%= link_to "Sign up Today!", new_user_registration_path, class: "btn btn-primary btn-xl" %>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="page-section cta">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-9 mx-auto">
+        <div class="cta-inner shadow bg-faded text-center rounded">
+          <h2 class="section-heading mb-4">
+            <span class="section-heading-upper">Browse Records</span>
+            <span class="section-heading-lower">And Send Offers</span>
+          </h2>
+          <svg xmlns="http://www.w3.org/2000/svg" width="95" height="95" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-9 mx-auto">
+        <div class="cta-inner shadow bg-faded text-center rounded">
+          <h2 class="section-heading mb-4">
+            <span class="section-heading-upper">Get Offers</span>
+            <span class="section-heading-lower">And SWAP!</span>
+          </h2>
+          <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor" class="bi bi-arrow-left-right" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M1 11.5a.5.5 0 0 0 .5.5h11.793l-3.147 3.146a.5.5 0 0 0 .708.708l4-4a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 11H1.5a.5.5 0 0 0-.5.5zm14-7a.5.5 0 0 1-.5.5H2.707l3.147 3.146a.5.5 0 1 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H14.5a.5.5 0 0 1 .5.5z"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</section>

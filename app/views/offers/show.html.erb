@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Offeredvinyl:</strong>
+  <%= @offer.offeredvinyl.title + ' - ' + @offer.offeredvinyl.author%> 
+</p>
+
+<p>
+  <strong>Receivervinyl:</strong>
+  <%= @offer.receivervinyl.title + ' - ' + @offer.receivervinyl.author %>
+</p>
+
+<p>
+  <strong>Offer state:</strong>
+  <%= @offer.offer_state %>
+</p>
+
+<p>
+  <strong>End date:</strong>
+  <%= @offer.end_date %>
+</p>
+
+<%= link_to 'Edit', edit_vinyl_offer_path(@offer.vinyl_id, @offer) %> |
+<%= link_to 'Back', vinyl_offers_path(@offer.vinyl_id) %>

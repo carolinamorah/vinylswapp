@@ -1,0 +1,35 @@
+<div class="container px-4 px-lg-5 mt-5">
+  <div class="row gx-4 gx-lg-5 row-cols-1 row-cols-md-3 row-cols-xl-4 justify-content-center">
+    <% @vinyls.each do |vinyl| %>
+      <div class="col mb-5">
+       <div class="card h-100 shadow justify-content-center">
+          <!-- Vinyl image -->
+          <% if vinyl.image.attached? %>
+            <%= link_to vinyl do %>
+              <%= image_tag vinyl.image, class: "card-img-top", alt: "#{vinyl.title}" %>
+            <% end  %>
+          <% end %>
+          <div class="card-body">
+            <!-- vinyl name-->
+            <h5 class="card-title fw-bolder text-center"><%= vinyl.title%></h5>
+            <h6 class="card-title text-center"><%= vinyl.author %></h6>
+          </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item text-muted text-center"><%= vinyl.condition %></li>
+            </ul>
+          <!-- agregar vinyl actions --> 
+          <div class="card-body mx-auto"> 
+          <% if vinyl.status === "available" %>            
+            <%= link_to new_vinyl_offer_path(vinyl), method: :get do %>
+              <button type="button" class="btn btn-outline-dark btn-sm shadow mt-auto">Swap Request</button>
+            <% end %><br />  
+          <% else %>
+            <%= button_tag "Swapped", disabled: true, class: "btn btn-outline-secondary btn-sm mt-auto"%>
+          <% end %>        
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>    
+

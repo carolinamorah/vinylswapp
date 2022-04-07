@@ -1,0 +1,6 @@
+<h1>Editing Offer</h1>
+
+<%= render 'form', offer: @offer %>
+
+<%= link_to 'Show', vinyl_offer_path(@vinyl.id, @offer.id)%> |
+<%= link_to 'Back', vinyl_offers_path(:vinyl_id)%>

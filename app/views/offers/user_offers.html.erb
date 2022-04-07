@@ -1,0 +1,62 @@
+
+<p id="notice"><%= notice %></p>
+
+<h1> Offers Sended</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Offered vinyl</th>
+      <th>Chosen Vinyl</th>
+      <th>Owner</th>
+      <th>State</th>
+      <th>End date</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @offers.each do |offer| %>
+      <tr>
+        <td><%= offer.offeredvinyl.title %></td>
+        <td><%= offer.receivervinyl.title %></td>
+        <td><%= offer.user.collectionist_name%></td>
+        <td><%= offer.offer_state %></td>
+        <td><%= offer.end_date %></td>
+      
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<h1> Offers Receivered</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Offered vinyl</th>
+      <th>Chosen Vinyl</th>
+      <th>Owner</th>
+      <th>State</th>
+      <th>End date</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @received_offers.each do |offer| %>
+      <tr>
+        <td><%= offer.offeredvinyl.title %></td>
+        <td><%= offer.receivervinyl.title %></td>
+        <td><%= offer.user.collectionist_name%></td>
+        <td><%= offer.offer_state %></td>
+        <td><%= offer.end_date %></td>
+      
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+

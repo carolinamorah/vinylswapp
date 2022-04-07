@@ -1,0 +1,76 @@
+<section class="pt-5">
+  <div class="container px-4 px-lg-5 my-5">
+    <div class="row gx-4 gx-lg-5 align-items-center">
+      <div class="col-md-6">
+      <!--Agregar variante y resize-->
+        <%= image_tag @vinyl.image, style:"500x500", class: "card-img-top mb-5 mb-md-0", alt: "#{@vinyl.title}" %>
+      </div>
+      <div class="intro-text p-5 bg-faded rounded col-md-6">
+        <h2 class="section-heading mb-1">
+          <span class="section-heading-upper"><%= @vinyl.author %></span>
+          <span class="section-heading-lower"><%= @vinyl.title %></span>
+        </h2>
+        <br>
+        <p>
+            <strong>Condition: </strong>
+            <%= @vinyl.condition %>
+        </p>
+        <p>
+            <strong>Release date:</strong>
+            <%= @vinyl.released_date %>
+        </p>
+        <p>
+            <strong>Format:</strong>
+            <%= @vinyl.format %>
+        </p>
+        <p>
+            <strong>Status:</strong>
+            <%= @vinyl.status %>
+        </p>
+        <p>
+            <strong>Description:</strong>
+            <%= @vinyl.description %>
+        </p>
+        <p>
+            <strong>Owner:</strong>
+            <%= @vinyl.user.collectionist_name %>
+        </p>
+        <p>
+            <strong>Genres:</strong>
+            <%= @vinyl.genre %>
+        </p>
+
+        <div class="d-flex pt-4">
+          <% if @vinyl.status === "available" %>
+            <%= form_for :offer, url: new_vinyl_offer_path(@vinyl), method: :get do |f| %>
+              <%= f.hidden_field :vinyl_id, value: @vinyl.id %>
+              <%= f.submit "Swap Request", class: "btn btn-outline-dark mt-auto" %>
+            <% end %>
+          <% else %>
+            <%= button_tag "Swapped", disabled: true, class: "btn btn-outline-dark mt-auto"%>
+          <% end %>
+        </div>
+        <!--Condicional el dueño puede editar y borrar-->
+        <% if @vinyl.user_id == current_user.id %>
+          <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-5">
+            <%= link_to edit_vinyl_path(@vinyl) do %>
+              <button class="btn btn-outline-dark btn-sm" type="button">Edit vinyl</button>
+            <% end %>
+            <!-- Enlace delete recarga el show y no borra-->
+            <%= link_to @vinyl, method: :delete, data: {confirm: "Are you sure?"} do %>
+              <button class="btn btn-outline-dark btn-sm" type="button">Delete Vinyl</button>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="page-section cta d-none d-lg-block">
+  <div class="container">     
+    <h2 class="section-heading mb-4 cta-inner bg-faded text-center rounded p-2">
+      <span class="section-heading-lower">Related Vinyls</span>
+    </h2
+    <!-- Agregar lista de vinilos similares-->
+  </div>
+</section>
