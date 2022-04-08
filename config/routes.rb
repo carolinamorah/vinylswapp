@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   
   root to: "home#index"
 
+  get '/users/:user_id/my_swaps/offers', to: 'offers#swapped_vinyls', as: 'my_swaps'
   get '/users/:user_id/offers', to: 'offers#user_offers', as: 'my_offers'
   delete '/vinyls/:vinyl_id/offers/:id', to: 'offers#destroy', as: 'destroy'
   get "users_list", to: "home#users"

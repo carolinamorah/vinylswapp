@@ -2,12 +2,12 @@
   <div class="container">
     <div class="intro">
       <%= image_tag asset_path("caezaevinilo.jpg"), class: "intro-img img-fluid mb-3 shadow-lg mb-lg-0 rounded", alt: "intro image" %>
-      <div class="intro-text left-0 text-center bg-faded p-5 rounded">
+      <div class="intro-text left-0 text-center bg-faded border border-warning border-2 p-5 rounded">
         <h2 class="section-heading mb-4">
           <span class="section-heading-upper">For Free</span>
           <span class="section-heading-lower">Upload Your Vinyl Collection</span>
         </h2>
-        <p class="mb-3"><%= Faker::Lorem.sentence(word_count: 30) %></p>
+        <p class="mb-3"><%= Faker::Lorem.sentence(word_count: 40) %></p>
         <div class="intro-button mx-auto">
           <%= link_to "Sign up Today!", new_user_registration_path, class: "btn btn-primary btn-xl" %>
       </div>
@@ -18,7 +18,7 @@
   <div class="container">
     <div class="row">
       <div class="col-xl-9 mx-auto">
-        <div class="cta-inner shadow bg-faded text-center rounded">
+        <div class="cta-inner bg-faded text-center rounded">
           <h2 class="section-heading mb-4">
             <span class="section-heading-upper">Browse Records</span>
             <span class="section-heading-lower">And Send Offers</span>
@@ -33,7 +33,7 @@
   <div class="container">
     <div class="row">
       <div class="col-xl-9 mx-auto">
-        <div class="cta-inner shadow bg-faded text-center rounded">
+        <div class="cta-inner bg-faded text-center rounded">
           <h2 class="section-heading mb-4">
             <span class="section-heading-upper">Get Offers</span>
             <span class="section-heading-lower">And SWAP!</span>

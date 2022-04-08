@@ -74,6 +74,11 @@ class OffersController < ApplicationController
     @offers = current_user.offers
   end 
 
+  def swapped_vinyls
+    @swapped_vinyls = Offer.where(user_id: current_user.id).where(offer_state: 1)
+    @offers = current_user.offers
+  end 
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

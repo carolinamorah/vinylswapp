@@ -6,7 +6,8 @@ class Vinyl < ApplicationRecord
   has_one_attached :image
 
   enum status: [:available, :swapped]
-  #enum condition: [:New, :Used]
+
+  paginates_per 12
 
   validates :title, :author, :description, :status, presence: true
   validates :description, length: {maximum: 500, too_long: "%#{count} exceeds the character limit."}

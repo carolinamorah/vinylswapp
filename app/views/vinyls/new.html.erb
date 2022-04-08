@@ -2,15 +2,14 @@
   <div class="container">
     <div class="about-heading-content">
       <div class="row">
-        <div class="col-xl-9 col-lg-10 mx-auto">
-          <div class="bg-faded shadow-lg rounded p-5">
+        <div class="col-md-9 mx-auto">
+          <div class="bg-faded shadow-lg border border-warning rounded p-5">
             <h2 class="section-heading mb-4">
-              <span class="section-heading-lower">New Vinyl</span>
+              <span class="section-heading-lower text-center">New Vinyl</span>
             </h2>
-            <p>
+            <p class="mx-auto">
               <%= render 'form', vinyl: @vinyl %>
-              
-              <%= link_to 'Back', vinyls_path,  class: "btn btn-outline-dark btn-sm" %>
+              <%= link_to 'Back', vinyls_path %>
             </p>
           </div>
         </div>

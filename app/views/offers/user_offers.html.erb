@@ -1,62 +1,71 @@
-
 <p id="notice"><%= notice %></p>
+<br>
+<div class="container border border-warning border-2">
+ <h1 class="text-center"> Offers Received</h1>
+    <br>
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th>Offered vinyl</th>
+          <th>Chosen Vinyl</th>
+          <th>Sender</th>
+          <th>State</th>
+          <th>End date</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
 
-<h1> Offers Sended</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Offered vinyl</th>
-      <th>Chosen Vinyl</th>
-      <th>Owner</th>
-      <th>State</th>
-      <th>End date</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @offers.each do |offer| %>
-      <tr>
-        <td><%= offer.offeredvinyl.title %></td>
-        <td><%= offer.receivervinyl.title %></td>
-        <td><%= offer.user.collectionist_name%></td>
-        <td><%= offer.offer_state %></td>
-        <td><%= offer.end_date %></td>
-      
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      <tbody>
+        <% @received_offers.each do |offer| %>
+          <tr>
+            <td><%= offer.offeredvinyl.title %></td>
+            <td><%= offer.receivervinyl.title %></td>
+            <td><%= offer.user_id%></td>
+            <td><%= offer.offer_state %></td>
+            <td><%= offer.end_date %></td>
+            <td><%= button_to 'Accept'%></td>
+            <td><%= button_to 'Decline'%></td>
+            <td><%= button_to 'Delete'%></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+</div>
 
 <br>
+<br>
 
-<h1> Offers Receivered</h1>
+<div class="container border border-warning border-2">
+  <h1 class="text-center">Offers Sended</h1>
+    <br>
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th>Offered vinyl</th>
+          <th>Chosen Vinyl</th>
+          <th>Owner</th>
+          <th>State</th>
+          <th>End date</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
 
-<table>
-  <thead>
-    <tr>
-      <th>Offered vinyl</th>
-      <th>Chosen Vinyl</th>
-      <th>Owner</th>
-      <th>State</th>
-      <th>End date</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+      <tbody>
+        <% @offers.each do |offer| %>
+          <tr>
+            <td><%= offer.offeredvinyl.title %></td>
+            <td><%= offer.receivervinyl.title %></td>
+            <td><%= offer.user.collectionist_name%></td>
+            <td><%= offer.offer_state %></td>
+            <td><%= offer.end_date %></td>
+            <td><%= button_to 'Cancel'%></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+</div>
+<br>
+<br>
 
-  <tbody>
-    <% @received_offers.each do |offer| %>
-      <tr>
-        <td><%= offer.offeredvinyl.title %></td>
-        <td><%= offer.receivervinyl.title %></td>
-        <td><%= offer.user.collectionist_name%></td>
-        <td><%= offer.offer_state %></td>
-        <td><%= offer.end_date %></td>
-      
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
 

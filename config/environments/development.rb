@@ -57,6 +57,7 @@ Rails.application.configure do
 
 
 
+ # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   config.force_ssl = false
 
   # Use an evented file watcher to asynchronously detect changes in source code,

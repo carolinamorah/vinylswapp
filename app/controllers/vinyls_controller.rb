@@ -3,7 +3,7 @@ class VinylsController < ApplicationController
 
   # GET /vinyls or /vinyls.json
   def index
-    @vinyls = Vinyl.with_attached_image.all.order("created_at desc")
+    @vinyls = Vinyl.with_attached_image.all.order("created_at desc").page(params[:page])
   end
 
   # GET /vinyls/1 or /vinyls/1.json

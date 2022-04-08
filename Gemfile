@@ -69,4 +69,5 @@ gem 'faker'
 gem "select2-rails"
 gem 'activeadmin'
 gem 'rails-erd'
+gem 'kaminari'
 

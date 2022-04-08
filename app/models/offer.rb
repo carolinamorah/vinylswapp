@@ -9,8 +9,9 @@ class Offer < ApplicationRecord
 
   validates_uniqueness_of :offeredvinyl_id, :scope => :vinyl_id
 
-  def get_owner_name
-    
+  def get_sender_name
+    sender_name = Offer.joins(:user).pluck(:id, :collectionist_name)
+
   end
 
 end
