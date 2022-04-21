@@ -1,7 +1,7 @@
 <section class="page-section ">
   <div class="container mx-auto">     
     <h2 class="section-heading mb-5 cta-inner bg-faded text-center border border-warning rounded p-2">
-      <span class="section-heading-lower">Record's  Box <%= image_tag("box.png", size: "35") %></span>
+      <span class="section-heading-lower">Record's Box <%= image_tag("box.png", size: "35") %></span>
     </h2>
     <div class="py-4 page-section cta-inner bg-faded border border-warning">
       <div class="d-grid gap-2 d-md-flex flex-row justify-content-md-end mt-2">
@@ -19,9 +19,11 @@
         <%= render 'shared/vinylslist' %>       
       </p> 
     </div>
-    <p class="mx-auto">
-      <%= paginate @vinyls %> 
-    </p>
+    <div class="pagination justify-content-center">
+      <h5 class="m-4 text-center p-3">
+        <span><%= paginate @vinyls %></span>
+      </h5>
+    </div>
   </div>
 </section>
 

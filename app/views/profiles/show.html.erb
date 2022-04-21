@@ -1,0 +1,143 @@
+<p id="notice"><%= notice %></p>
+  <div class="shadow-lg main">
+      <div class="row">
+          <div class="col-sm-6 picture">
+              <center><%= image_tag(@profile.avatar.url, :class => "rounded-circle img-fluid") %></center>
+          </div>
+          <div class="col-sm-6 details">
+              <center>
+                  <p class="name"><b><%= @profile.user.collectionist_name%></b> <i class="material-icons tick">check_circle</i></p>
+              </center>
+              <center>
+                  <p><%=@profile.city%></p>
+              </center>
+              <center>                                                                                          
+                  <p><%= @profile.state%></p>                               
+              </center>
+              <center class="caption">                                                                                        
+                  <%= link_to like_profile_path(@profile), class: "like", method: :put do %>
+                    <button type="button" class="btn btn-link" aria-label="Left Align">
+                      <span class="fa fa-thumbs-up"></span> 
+                      <span class="badge"><%= @profile.get_upvotes.size %></span>
+                    </button> 
+                  <% end %>      
+                  <%= link_to unlike_profile_path(@profile), class: "like", method: :put do %>
+                    <button type="button" class="btn btn-link" aria-label="Left Align">
+                      <span class="fa fa-thumbs-down"></span> 
+                      <span class="badge"><%= @profile.get_downvotes.size %></span>
+                    </button> 
+                  <% end %>                  
+              </center>
+          </div>
+          <div class="col-sm-12 details">
+            <hr>
+            <center>
+              <p><%= @profile.bio%></p>  
+              <br>
+            </center>
+            <hr>
+          </div>
+      
+          <table class="table">
+              <tr>
+                  <td>
+                    <center>
+                        <p><b><%=@profile.user.vinyls.count%></b></p>
+                        <h6>Vinyls</h6w>
+                    </center>
+                  </td>
+                  <td>
+                    <center>
+                        <p><b><%=@profile.user.vinyls.where(status: "swapped").count%></b></p>
+                        <h6>Swaps</h6>
+                    </center>
+                  </td>
+              </tr>
+          </table>
+          <center><%= link_to 'Edit', edit_profile_path(@profile), class:"waves-effect waves-light btn edit" %></center>
+      </div>    
+  </div>
+ <br><br><br><br><br><br><br>
+  <div class="col-md-12">
+  <!-- Nav tabs -->
+  <ul class="container nav nav-tabs mt-5" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <button class="nav-link active" id="messages-tab" data-bs-toggle="tab" data-bs-target="#messages" type="button" role="tab" aria-controls="messages" aria-selected="false">Messages</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="settings-tab" data-bs-toggle="tab" data-bs-target="#settings" type="button" role="tab" aria-controls="settings" aria-selected="false">My Record Collection</button>
+    </li>
+  </ul>
+  
+  <!-- Tab panes -->
+  <div class="container tab-content mt-5 ">
+    <div class="tab-pane active" id="messages" role="tabpanel" aria-labelledby="messages-tab">holaaaa</div>
+    <div class="tab-pane" id="settings" role="tabpanel" aria-labelledby="settings-tab">
+      <div class="container px-4 px-lg-5 mt-5">
+        <div class="row gx-4 gx-lg-5 row-cols-1 row-cols-md-3 row-cols-xl-4 justify-content-center">
+          <% @vinyls.each do |vinyl| %>
+            <div class="col mb-5">
+            <div class="card h-100 shadow justify-content-center">
+                <!-- Vinyl image -->
+                <% if vinyl.image.attached? %>
+                  <%= link_to vinyl do %>
+                    <%= image_tag vinyl.image, class: "card-img-top", alt: "#{vinyl.title}" %>
+                  <% end  %>
+                <% end %>
+                <div class="card-body">
+                  <!-- vinyl name-->
+                  <h5 class="card-title fw-bolder text-center "><%= vinyl.title %></h5>
+                  <h6 class="card-title text-center"><%= vinyl.author %></h6>
+                </div>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item text-muted text-center"><%= vinyl.condition %></li>
+                  </ul>
+                <!-- agregar vinyl actions --> 
+                <div class="card-body mx-auto"> 
+                <% if vinyl.status === "available" %>            
+                  <%= link_to new_vinyl_offer_path(vinyl), method: :get do %>
+                    <button type="button" class="btn btn-outline-dark btn-sm shadow mt-auto">Swap Request</button>
+                  <% end %><br />  
+                <% else %>
+                  <%= button_tag "Swapped", disabled: true, class: "btn btn-outline-secondary btn-sm mt-auto"%>
+                <% end %> 
+                </div>
+              </div>
+            </div>
+          <% end %>
+          <h5 class="m-4 text-center p-3">
+          <span><%= paginate @vinyls %></span>
+        </h5>
+        </div>
+
+      </div>    
+    </div>
+  </div>
+ 
+
+  <br><br><br><br><br><br><br><br><br><br><br><br>
+
+
+  
+  
+<!--<p>
+   
+  <p>
+    <strong>Latitude:</strong>
+    <%= @profile.latitude %>
+  </p>
+
+  <p>
+    <strong>Longitude:</strong>
+    <%= @profile.longitude %>
+  </p>
+
+  <%= link_to 'Back', profiles_path %> -->
+
+
+
+
+
+
+
+

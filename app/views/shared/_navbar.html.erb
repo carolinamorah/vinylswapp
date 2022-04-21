@@ -8,15 +8,18 @@
       <ul class="navbar-nav mx-auto">
         <% if user_signed_in? %>
           <li class="nav-item px-lg-4 px-lg-4">
-            <%= link_to 'My Swaps', my_swaps_path(current_user.id, @offers), class: "nav-link text-uppercase" %>
-          </li>
-          <li class="nav-item px-lg-4 px-lg-4">
             <%= link_to 'All Vinyls', vinyls_path, class: "nav-link text-uppercase" %>
           </li>
-          <li class="nav-item px-lg-4">
-          <!-- NO FUNCIONA LA RUTA, PIDE UN VINYL_ID -->
-             <%= link_to 'Barter Offers', my_offers_path(current_user.id, @offers), class: "nav-link text-uppercase" %>
-          </li> 
+          
+          <% if current_user.admin? %>
+            <li class="nav-item px-lg-4">
+              <%= link_to 'Swaps Request', offers_list_path, class: "nav-link text-uppercase" %>
+            </li> 
+          <% else %>
+            <li class="nav-item px-lg-4">
+              <%= link_to 'My Swaps Request', my_offers_path(current_user.id, @offers), class: "nav-link text-uppercase" %>
+            </li> 
+          <% end %>
           <li class="nav-item dropdown">
             <span class="nav-link dropdown-toggle text-uppercase" id="userOptions" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Logged in as <%= current_user.email %>
@@ -25,14 +28,18 @@
               <li>
                 <%= link_to 'Edit profile', edit_user_registration_path, class: "dropdown-item" %> 
               </li>
-              <li>
-                <%= link_to "My Profile", root_path, method: :get, class: "dropdown-item" %>
-              </li>
-              <li>
+              <%if current_user.profile == nil %>
+                <li>
+                  <%= link_to 'Create Your Profile', new_profile_path, class: "dropdown-item" %>
+                </li>
+              <% else %>
+                <li>
+                  <%= link_to "My Profile", current_user.profile, class: "dropdown-item" %>
+                </li>
+              <% end %>
               <li>
                 <%= link_to "My Record Collection",root_path, method: :get, class: "dropdown-item" %>
               </li>
-              <div class="dropdown-divider"></div>
               <li>
                 <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
               </li>

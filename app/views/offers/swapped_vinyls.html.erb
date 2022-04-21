@@ -1,31 +1,37 @@
 <p id="notice"><%= notice %></p>
 <br>
 <div class="container border border-warning border-2">
- <h1 class="text-center"> Swaps List</h1>
+ <h1 class="text-center mt-4"> Swaps List</h1>
     <br>
-    <table class="table table-striped table-hover">
-      <thead>
-        <tr>
-          <th>Offered vinyl</th>
-          <th>Chosen Vinyl</th>
-          <th>State</th>
-          <th>End date</th>
-          <th colspan="3"></th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <% @swapped_vinyls.each do |swap| %>
+    <div class="table-responsive">
+      <table class="table table-striped table-hover">
+        <thead>
           <tr>
-            <td><%= swap.offeredvinyl.title %></td>
-            <td><%= swap.receivervinyl.title %></td>
-            <td><%= swap.offer_state %></td>
-            <td><%= swap.end_date %></td>
-            <td><%= button_to 'Delete'%></td>
+            <th>OFFERED VINYL</th>
+            <th>SENDER</th>
+            <th>CHOSEN VINYL</th>
+            <th>OWNER</th>
+            <th>STATE</th>
+            <th>END DATE</th>
+            <th colspan="3"></th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
+        </thead>
+
+        <tbody>
+          <% @swapped_vinyls.each do |swap| %>
+            <tr>
+              <td><%= swap.offeredvinyl.title %></td>
+              <td><%= swap.user_id %></td>
+              <td><%= swap.receivervinyl.title %></td>
+              <td><%= swap.owner_id %></td>
+              <td><%= swap.offer_state %></td>
+              <td><%= swap.end_date %></td>
+              <td><%= button_to 'Cancel'%></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
 </div>
 
 <br>

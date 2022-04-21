@@ -2,11 +2,12 @@ class OffersController < ApplicationController
   before_action :set_offer, only: %i[ show edit update destroy ]
   before_action :set_user_vinyls, only: %i[ new create ]
   before_action :set_vinyl
+  before_action :authenticate_user!
 
   # GET /offers or /offers.json
-  def index
+  def index  
     @vinyl = Vinyl.find(params[:vinyl_id])
-    @offers = @vinyl.offers.includes(:user).all
+    @offers = @vinyl.offers.includes(:user).all.order("created_at desc")
   end
 
   # GET /offers/1 or /offers/1.json
@@ -50,7 +51,7 @@ class OffersController < ApplicationController
   def update
     respond_to do |format|
       if @offer.update(offer_params)
-        format.html { redirect_to offer_url(@offer), notice: "Offer was successfully updated." }
+        format.html { redirect_to vinyl_offer_path(@offer.vinyl_id, @offer.id), notice: "Offer was successfully updated." }
         format.json { render :show, status: :ok, location: @offer }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -61,29 +62,62 @@ class OffersController < ApplicationController
 
   # DELETE /offers/1 or /offers/1.json
   def destroy
+    @offer = Offer.find(params[:id])
     @offer.destroy
 
     respond_to do |format|
-      format.html { redirect_to vinyl_offers_path(params[:vinyl_id], @offer.id), notice: "Offer was successfully destroyed." }
+      format.js
+      format.html { redirect_to my_offers_path(@offer.user_id, @offers), notice: "Offer was successfully canceled." }
       format.json { head :no_content }
     end
   end
 
   def user_offers
+    #@offer = Offer.find(params[:id])
     @received_offers = Offer.where(owner_id: current_user.id)
     @offers = current_user.offers
+    # @offer.destroy
+
+    # respond_to do |format|
+    #   format.html { redirect_to user_offers_path(params[:user_id], @offers.ids), notice: "Offer was successfully destroyed." }
+    #   format.json { head :no_content }
+    # end
   end 
 
-  def swapped_vinyls
-    @swapped_vinyls = Offer.where(user_id: current_user.id).where(offer_state: 1)
-    @offers = current_user.offers
-  end 
+
+  def accept
+    offer = Offer.find(params[:id])
+    offered_vinyl = Vinyl.find(offer.offeredvinyl_id)
+    other_vinyl = Vinyl.find(offer.vinyl_id)
+    if offer 
+        if offer.update(offer_state: "accepted")
+           offered_vinyl.update(user_id: current_user.id)
+            other_vinyl.update(user_id: offer.user_id)
+            offered_vinyl.update(status: "swapped")
+            other_vinyl.update(status: "swapped")
+            
+            flash[:notice] = "Congratulations! You have done a vinyl swap"
+            redirect_to my_offers_path(current_user.id, @offers)
+        end
+    end
+  end
+
+  def decline
+      offer = Offer.find(params[:id])
+      if offer 
+          if offer.update(offer_state: "declined")
+
+            flash[:alert] = "You have refused a vinyl swap request"  
+              redirect_to root_path
+          end
+      end
+  end
 
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_offer
-      @offer = Offer.find(params[:id])
+      @offer = Offer.find_by(id: params[:id]) #coloqué id:
     end
 
     def set_vinyl

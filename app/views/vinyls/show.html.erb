@@ -1,13 +1,13 @@
 <section class="pt-5">
   <div class="container px-4 px-lg-5 my-5">
     <div class="row gx-4 gx-lg-5 align-items-center">
-      <div class="col-md-6">
+      <div class="col-md-6 col-sm-12">
       <!--Agregar variante y resize-->
-        <%= image_tag @vinyl.image, style:"500x500", class: "card-img-top mb-5 mb-md-0", alt: "#{@vinyl.title}" %>
+        <%= image_tag @vinyl.image, style:"600x600", class: "card-img-top mb-md-0 shadow", alt: "#{@vinyl.title}" %>
       </div>
-      <div class="intro-text p-5 bg-faded rounded col-md-6">
+      <div class="vinyl-desc p-5 bg-faded shadow border border-warning col-sm-12 col-md-6 px-lg-4">
         <h2 class="section-heading mb-1">
-          <span class="section-heading-upper"><%= @vinyl.author %></span>
+          <span class="section-heading-upper"><%= @vinyl.author%></span>
           <span class="section-heading-lower"><%= @vinyl.title %></span>
         </h2>
         <br>
@@ -33,7 +33,7 @@
         </p>
         <p>
             <strong>Owner:</strong>
-            <%= @vinyl.user.collectionist_name %>
+            <%= link_to @vinyl.user.collectionist_name, profiles_path%>          
         </p>
         <p>
             <strong>Genres:</strong>
@@ -41,6 +41,7 @@
         </p>
 
         <div class="d-flex pt-4">
+        <!--Botón de swap está deshabilitado cuando se concretó un trueque-->
           <% if @vinyl.status === "available" %>
             <%= form_for :offer, url: new_vinyl_offer_path(@vinyl), method: :get do |f| %>
               <%= f.hidden_field :vinyl_id, value: @vinyl.id %>
@@ -51,7 +52,7 @@
           <% end %>
         </div>
         <!--Condicional el dueño puede editar y borrar-->
-        <% if @vinyl.user_id == current_user.id %>
+        <% if @vinyl.user_id == current_user.id || current_user.admin? %>
           <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-5">
             <%= link_to edit_vinyl_path(@vinyl) do %>
               <button class="btn btn-outline-dark btn-sm" type="button">Edit vinyl</button>
@@ -62,6 +63,9 @@
             <% end %>
           </div>
         <% end %>
+        <div class="fs-5">
+          <%= link_to 'Back', vinyls_path %> 
+        </div>
       </div>
     </div>
   </div>

@@ -21,4 +21,4 @@
 </p>
 
 <%= link_to 'Edit', edit_vinyl_offer_path(@offer.vinyl_id, @offer) %> |
-<%= link_to 'Back', vinyl_offers_path(@offer.vinyl_id) %>
+<%= link_to 'Back', my_offers_path(current_user.id, @offers) %>

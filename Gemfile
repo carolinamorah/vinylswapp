@@ -70,4 +70,6 @@ gem "select2-rails"
 gem 'activeadmin'
 gem 'rails-erd'
 gem 'kaminari'
+gem 'carrierwave', '~> 2.0'
+gem 'acts_as_votable'
 

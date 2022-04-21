@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= form.label :offeredvinyl_id, "Offered Vinyl" %>
-    <%= form.select :offeredvinyl_id, options_for_select(@offered_vinyl)%>   
+    <%= form.select :offeredvinyl_id, options_for_select(current_user.vinyls.where(:status=> 'available').pluck(:title, :id))%>   
   </div>
 
   <div class="field">
@@ -39,3 +39,4 @@
     <%= form.submit %>
   </div>
 <% end %>
+

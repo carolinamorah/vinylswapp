@@ -1,0 +1,127 @@
+// Place all the styles related to the profiles controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+body {
+    font-family: 'Saira Semi Condensed', sans-serif;
+    background-color: rgb(246, 241, 241) !important
+}
+
+.tick {
+    position: relative;
+    top: 0.5vh
+}
+
+.main {
+    height: auto;
+    width: 27vw;
+    background-color: rgba(104, 94, 94, 0.352);
+    margin-left: 12vw;
+    position: relative;
+    top: 15vh;
+    padding: 3vh
+}
+
+.picture img {
+    height: 8vw;
+    width: 8vw;
+    position: relative;
+    top: 1vw
+}
+
+.name {
+    font-size: 20px
+}
+
+.details p {
+    position: relative;
+    top: 1vw
+}
+
+.name i {
+    color: rgba(62, 168, 187, 0.852)
+}
+
+td {
+    text-align: center
+}
+
+tr {
+    border: 2px solid white
+}
+
+.table {
+    margin-top: 2vw
+}
+
+.edit {
+    background-color: #d79925ef !important;
+    width: 90%;
+    color: #fff !important
+}
+
+@media only screen and (max-width: 425px) {
+    .main {
+        width: 85vw !important;
+        height: auto
+    }
+
+    .picture img {
+        height: 40vw !important;
+        width: 40vw !important;
+        position: relative;
+        left: 4vw
+    }
+
+    .details p {
+        position: relative;
+        top: 5vw
+    }
+
+}
+
+@media only screen and (max-height: 725px) {
+    .main {
+        height: auto
+    }
+}
+
+@media only screen and (max-width: 820px) {
+    .main {
+        width: 80vw !important;
+        height: auto;
+        margin: auto;
+        margin-top: 4vh
+    }
+
+    .picture img {
+        height: 20vw;
+        width: 20vw;
+        position: relative;
+        left: 1vw;
+        top: 1vh
+    }
+
+    .details p {
+        position: relative;
+        top: 2vw
+    }
+
+}
+
+.nav-item {
+    font-family: 'Saira Semi Condensed', sans-serif;
+}
+
+.like:hover {
+    text-decoration: none;
+}
+
+.fa-thumbs-up, .fa-thumbs-down {
+    color: rgb(96, 92, 92);
+}
+
+
+

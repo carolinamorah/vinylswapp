@@ -23,7 +23,7 @@
         <td><%= offer.offer_state %></td>
         <td><%= offer.end_date %></td>
         <td><%= link_to 'Show', vinyl_offer_path(@vinyl.id, offer.id)%></td>
-        <td><%= link_to 'Edit', edit_vinyl_offer_path(@vinyl.id, offer.id) %></td>
+        <td><%= link_to 'Edit', edit_vinyl_offer_path(offer.vinyl_id, offer.id) %></td>
         <td><%= button_to 'Destroy', destroy_path(@vinyl.id, offer.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

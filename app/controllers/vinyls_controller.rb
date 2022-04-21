@@ -1,5 +1,6 @@
 class VinylsController < ApplicationController
   before_action :set_vinyl, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!
 
   # GET /vinyls or /vinyls.json
   def index
