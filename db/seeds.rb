@@ -7,14 +7,14 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
 
-#code = "password"
+code = "password"
 
-#50.times do 
-    #User.create(
-        #email: "user#{rand(100..200)}@example.com",
-        #collectionist_name: Faker::Name.name,
-       # password: code)
-#end
+50.times do 
+    User.create(
+       email: "user#{rand(100..200)}@example.com",
+       collectionist_name: Faker::Name.name,
+       password: code)
+end
 
 
-AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+AdminUser.create!(email: 'admin@example.com', password: code, password_confirmation: 'password') if Rails.env.development?
