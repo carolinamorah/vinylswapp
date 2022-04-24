@@ -1,17 +1,17 @@
 <p id="notice"><%= notice %></p>
 <br>
-<div class="container border border-warning border-2">
+<div class="container border border-warning border-2 bg-light">
  <h1 class="text-center mt-4"> Offers Received</h1>
     <br>
     <div class="table-responsive">
       <table class="table table-striped table-hover">
         <thead>
           <tr>
-            <th>OFFERED VINYL</th>
-            <th>CHOSEN VINYL</th>
+            <th>PROPOSED VINYL</th>
+            <th>YOUR VINYL</th>
             <th>SENDER</th>
             <th>STATE</th>
-            <th>END DATE</th>
+            <th>DATE</th>
             <th colspan="3"></th>
           </tr>
         </thead>
@@ -20,10 +20,10 @@
           <% @received_offers.each do |offer| %>
             <tr>
               <td><%= offer.offeredvinyl.title %></td>
-              <td><%= offer.receivervinyl.title %></td>
-              <td><%= offer.user_id%></td>
+              <td><%= link_to offer.receivervinyl.title%></td>
+              <td><%= link_to User.find(offer.user_id).collectionist_name%></td>
               <td><%= offer.offer_state %></td>
-              <td><%= offer.end_date %></td>
+              <td><%= offer.created_at.strftime("%Y-%m-%d")  %></td>
               <% if offer.offer_state === "pending" %> 
                 <td><%= button_to 'Accept', swap_accepted_path(offer.user_id, offer.id), class:"btn btn-warning shadow"%></td>
                 <td><%= button_to 'Decline', swap_declined_path(offer.user_id, offer.id), class:"btn btn-warning shadow"%></td>
@@ -41,30 +41,30 @@
 <br>
 <br>
 
-<div class="container border border-warning border-2">
+<div class="container border border-warning border-2 bg-light text-center">
   <h1 class="text-center mt-4">Offers Sent</h1>
     <br>
     <div class="table-responsive">
       <table class="table table-striped table-hover">
         <thead>
           <tr>
-            <th>OFFERED VINYL</th>
-            <th>CHOSEN VINYL</th>
+            <th>YOUR VINYL</th>
+            <th>REQUESTED VINYL</th>
             <th>OWNER</th>
             <th>STATE</th>
-            <th>END DATE</th>
+            <th>DATE</th>
             <th colspan="3"></th>
           </tr>
         </thead>
 
         <tbody>
-          <% @offers.each do |offer| %>
+          <% @offers_sent.each do |offer| %>
             <tr>
               <td><%= offer.offeredvinyl.title %></td>
               <td><%= offer.receivervinyl.title %></td>
-              <td><%= offer.user.collectionist_name%></td>
+              <td><%= link_to offer.user.collectionist_name%></td>
               <td><%= offer.offer_state %></td>
-              <td><%= offer.end_date %></td>
+              <td><%= offer.created_at.strftime("%Y-%m-%d")  %></td>
               <td><%= button_to 'Cancel', user_offer_path(offer.user_id, offer.id), method: :delete, data: {confirm: "Are you sure?"}%></td>
             </tr>
           <% end %>
@@ -74,6 +74,53 @@
 </div>
 <br>
 <br>
+
+<% if @swaps_other %>
+  <div class="container border border-warning border-2 bg-light text-center">
+  <h1 class="text-center mt-4">Your Swaps</h1>
+      <br>
+      <div class="table-responsive">
+        <table class="table table-striped table-hover">
+          <thead>
+            <tr>
+              <th>YOUR VINYL</th>
+              <th>SWAPPED VINYL</th>
+              <th>SWAPPED WITH</th>
+              <th>DATE</th>
+              <th colspan="3"></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @swaps_other.each do |swap| %>
+              <tr>
+                <td><%= swap.offeredvinyl.title %></td>
+                <td><%= swap.receivervinyl.title %></td>
+                <td><%= link_to User.find(swap.user_id).collectionist_name%></td>
+                <td><%= swap.created_at.strftime("%Y-%m-%d")  %></td>
+              </tr>
+            <% end %>
+          </tbody>
+          <br>
+          <% if @swaps_user %>
+            <tbody>
+              <% @swaps_user.each do |swap| %>
+                <tr>
+                  <td><%= swap.offeredvinyl.title%></td>
+                  <td><%= swap.receivervinyl.title %></td>
+                  <td><%= link_to swap.user.collectionist_name%></td>
+                  <td><%= swap.created_at.strftime("%Y-%m-%d")  %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          <% end %>
+        </table>
+      </div>
+  </div>
+  <br>
+  <br>
+<% end %>
+
 
 
 

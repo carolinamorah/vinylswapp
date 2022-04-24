@@ -6,7 +6,7 @@ class ProfilesController < ApplicationController
   end
 
   def show
-    @vinyls = Vinyl.all.order("created_at DESC").where(user_id: @profile.user.id).page(params[:page])
+    @vinyls = Vinyl.all.order("created_at DESC").where(user_id: @profile.user.id).page(params[:page]).per(4)
   end
 
   def new

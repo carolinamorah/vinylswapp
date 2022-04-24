@@ -9,9 +9,8 @@ class HomeController < ApplicationController
   end
   
 
-  def offers_list
-     
-      @offers_list = Offer.all.order("created_at asc") 
+  def offers_list 
+      @offers_list = Offer.all.where(offer_state: ["accepted", "declined", "pending"]).order("created_at asc") 
   end
 
 

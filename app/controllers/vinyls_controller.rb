@@ -9,7 +9,9 @@ class VinylsController < ApplicationController
 
   # GET /vinyls/1 or /vinyls/1.json
   def show
-    @vinyls = Vinyl.find(params[:id])
+    @vinyl = Vinyl.find(params[:id])
+    @owner = @vinyl.user_id
+    @profile = Profile.find_by(user_id: @owner)    
   end
 
   # GET /vinyls/new
@@ -23,8 +25,8 @@ class VinylsController < ApplicationController
 
   # POST /vinyls or /vinyls.json
   def create
-    @vinyl = current_user.vinyls.build(vinyl_params)
-    @vinyl.user = current_user
+      @vinyl = current_user.vinyls.build(vinyl_params)
+      @vinyl.user = current_user
 
     respond_to do |format|
       if @vinyl.save

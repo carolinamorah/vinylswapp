@@ -1,10 +1,10 @@
-<p id="notice"><%= notice %></p>
+
 <br>
-<div class="container border border-warning border-2">
- <h1 class="text-center mt-4"> Offers List</h1>
+<div class="container border border-warning border-2 bg-light">
+ <h1 class="text-center mt-4"> Swaps List</h1>
     <br>
     <div class="table-responsive">
-      <table class="table table-striped table-hover">
+      <table class="table table-striped table-hover text-center">
         <thead>
           <tr>
             <th>OFFERED VINYL</th>
@@ -12,7 +12,7 @@
             <th>SENDER</th>
             <th>OWNER</th>
             <th>STATE</th>
-            <th>END DATE</th>
+            <th>DATE</th>
             <th colspan="3"></th>
           </tr>
         </thead>
@@ -22,10 +22,10 @@
             <tr>
               <td><%= offer.offeredvinyl.title %></td>
               <td><%= offer.receivervinyl.title %></td>
-              <td><%= offer.user_id%></td>
-              <td><%= offer.owner_id%></td>
+              <td><%= User.find(offer.user_id).collectionist_name%></td>
+              <td><%= User.find(offer.owner_id).collectionist_name%></td>
               <td><%= offer.offer_state %></td>
-              <td><%= offer.end_date %></td>
+              <td><%= offer.created_at.strftime("%Y-%m-%d") %></td>
             </tr>
           <% end %>
         </tbody>

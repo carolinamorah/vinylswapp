@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-  <div class="shadow-lg main">
+  <div class="shadow-lg main rounded">
       <div class="row">
           <div class="col-sm-6 picture">
               <center><%= image_tag(@profile.avatar.url, :class => "rounded-circle img-fluid") %></center>
@@ -32,7 +32,7 @@
           <div class="col-sm-12 details">
             <hr>
             <center>
-              <p><%= @profile.bio%></p>  
+              <p><%= @profile.bio%><%= Faker::Lorem.sentence(word_count: 20) %></p>  
               <br>
             </center>
             <hr>
@@ -60,24 +60,31 @@
  <br><br><br><br><br><br><br>
   <div class="col-md-12">
   <!-- Nav tabs -->
-  <ul class="container nav nav-tabs mt-5" id="myTab" role="tablist">
+  <ul class="container nav nav-tabs mt-5 border-warning border-2" id="myTab" role="tablist">
     <li class="nav-item" role="presentation">
-      <button class="nav-link active" id="messages-tab" data-bs-toggle="tab" data-bs-target="#messages" type="button" role="tab" aria-controls="messages" aria-selected="false">Messages</button>
+      <button class="nav-link nav-profile active" id="messages-tab" data-bs-toggle="tab" data-bs-target="#messages" type="button" role="tab" aria-controls="messages" aria-selected="false">My Record Collection</button>
     </li>
     <li class="nav-item" role="presentation">
-      <button class="nav-link" id="settings-tab" data-bs-toggle="tab" data-bs-target="#settings" type="button" role="tab" aria-controls="settings" aria-selected="false">My Record Collection</button>
+      <button class="nav-link nav-profile" id="settings-tab" data-bs-toggle="tab" data-bs-target="#settings" type="button" role="tab" aria-controls="settings" aria-selected="false">Messages</button>
     </li>
   </ul>
   
   <!-- Tab panes -->
-  <div class="container tab-content mt-5 ">
-    <div class="tab-pane active" id="messages" role="tabpanel" aria-labelledby="messages-tab">holaaaa</div>
-    <div class="tab-pane" id="settings" role="tabpanel" aria-labelledby="settings-tab">
-      <div class="container px-4 px-lg-5 mt-5">
+  <div class="container tab-content mt-5">
+    <div class="tab-pane active" id="messages" role="tabpanel" aria-labelledby="messages-tab">
+    
+      <div class="container px-4 px-lg-5 mt-5 bg-transparent border border-warning border-2">
+      <div class="d-grid gap-2 d-md-flex flex-row justify-content-md-end mt-2">
+        <div class="input-group p-2 bd-highlight justify-content-md-end">
+            <%= link_to new_vinyl_path do %>
+              <i class="fa fa-plus-circle fa-3x" aria-hidden="true"></i>
+            <% end %>
+        </div>
+      </div>
         <div class="row gx-4 gx-lg-5 row-cols-1 row-cols-md-3 row-cols-xl-4 justify-content-center">
           <% @vinyls.each do |vinyl| %>
             <div class="col mb-5">
-            <div class="card h-100 shadow justify-content-center">
+            <div class="card h-100 shadow justify-content-center mt-5">
                 <!-- Vinyl image -->
                 <% if vinyl.image.attached? %>
                   <%= link_to vinyl do %>
@@ -104,13 +111,17 @@
                 </div>
               </div>
             </div>
-          <% end %>
-          <h5 class="m-4 text-center p-3">
-          <span><%= paginate @vinyls %></span>
-        </h5>
+          <% end %>   
         </div>
-
-      </div>    
+          <div class="pagination justify-content-center">
+            <h5 class="m-4 text-center p-3">
+              <span><%= paginate @vinyls %></span>
+            </h5>
+          </div>
+      </div>  
+    </div>
+    <div class="tab-pane" id="settings" role="tabpanel" aria-labelledby="settings-tab">
+        <p> holaaaaaa</p>
     </div>
   </div>
  

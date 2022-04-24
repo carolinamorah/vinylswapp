@@ -5,8 +5,7 @@
 
 
 body {
-    font-family: 'Saira Semi Condensed', sans-serif;
-    background-color: rgb(246, 241, 241) !important
+    font-family: 'Saira Semi Condensed', sans-serif; 
 }
 
 .tick {
@@ -17,7 +16,7 @@ body {
 .main {
     height: auto;
     width: 27vw;
-    background-color: rgba(104, 94, 94, 0.352);
+    background-color: #d4d0c9ef;
     margin-left: 12vw;
     position: relative;
     top: 15vh;
@@ -45,7 +44,8 @@ body {
 }
 
 td {
-    text-align: center
+    text-align: center;
+
 }
 
 tr {
@@ -115,6 +115,14 @@ tr {
     font-family: 'Saira Semi Condensed', sans-serif;
 }
 
+.nav-profile:focus {
+    background-color: rgb(220, 174, 99) !important ;
+} 
+
+.nav-profile {
+    background-color: #b9b8b6ef !important;
+}
+
 .like:hover {
     text-decoration: none;
 }
@@ -124,4 +132,10 @@ tr {
 }
 
 
+.bg-transparent {
+    backdrop-filter: blur(25px);
+}
 
+path:hover{
+    fill:rgba(215, 212, 210, 0.391) !important;
+}

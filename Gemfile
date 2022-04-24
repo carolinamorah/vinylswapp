@@ -72,4 +72,5 @@ gem 'rails-erd'
 gem 'kaminari'
 gem 'carrierwave', '~> 2.0'
 gem 'acts_as_votable'
+gem "aws-sdk-s3"
 

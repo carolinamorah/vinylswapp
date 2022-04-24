@@ -73,17 +73,22 @@ class OffersController < ApplicationController
   end
 
   def user_offers
-    #@offer = Offer.find(params[:id])
     @received_offers = Offer.where(owner_id: current_user.id)
-    @offers = current_user.offers
-    # @offer.destroy
+    @offers_sent= current_user.offers
+    @user_id = current_user.id
+    @swaps_other = Offer.where(owner_id: @user_id, offer_state: "accepted")
+    @swaps_user = Offer.where(user_id: @user_id, offer_state: "accepted") 
+    
+   
+     
+    #@offers = Offer.find_by(params[:id])
+    #@user = User.find(@offers.owner_id)
 
-    # respond_to do |format|
-    #   format.html { redirect_to user_offers_path(params[:user_id], @offers.ids), notice: "Offer was successfully destroyed." }
-    #   format.json { head :no_content }
-    # end
+    #@user_owner = @offers.owner_id
+    #@user_sender = @offers.user_id
+    #@profile_owner = Profile.find_by(user_id: @user)  
+    #@profile_sender = Profile.find_by(user_id: @user_sender) 
   end 
-
 
   def accept
     offer = Offer.find(params[:id])
