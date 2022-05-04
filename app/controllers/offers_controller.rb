@@ -73,7 +73,7 @@ class OffersController < ApplicationController
   end
 
   def user_offers
-    @received_offers = Offer.where(owner_id: current_user.id).where.not(offer_state: "declined")
+    @received_offers = Offer.where(owner_id: current_user.id).where.not(offer_state: ["declined", "accepted")
     @offers_sent= current_user.offers.where.not(offer_state: "accepted")
     @user_id = current_user.id
     @swaps_other = Offer.where(owner_id: @user_id, offer_state: "accepted")
@@ -109,11 +109,9 @@ class OffersController < ApplicationController
       Offer.where(offeredvinyl_id: offer.offeredvinyl_id).where.not(id: offer.id).update_all(offer_state: "declined")
       
       flash[:notice] = "Congratulations! You have done a vinyl swap"
-
-      OfferNotifierMailer.send_completed_swap_email(@user).deliver_later
-      
-
       redirect_to my_offers_path(current_user.id, @offers)  
+
+      OfferNotifierMailer.send_completed_swap_email(@user).deliver_now
     else 
       flash[:error] = "No se pudo concretar el swap"
       redirect_to vinyls_path
