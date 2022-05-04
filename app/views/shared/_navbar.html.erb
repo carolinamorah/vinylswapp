@@ -10,6 +10,9 @@
           <li class="nav-item px-lg-4 px-lg-4">
             <%= link_to 'All Vinyls', vinyls_path, class: "nav-link text-uppercase" %>
           </li>
+          <li class="nav-item px-lg-4 px-lg-4">
+            <%= link_to 'Collectionists', profiles_path, class: "nav-link text-uppercase" %>
+          </li>
           
           <% if current_user.admin? %>
             <li class="nav-item px-lg-4">
@@ -38,7 +41,7 @@
                 </li>
               <% end %>
               <li>
-                <%= link_to "My Record Collection",root_path, method: :get, class: "dropdown-item" %>
+                <%= link_to "My Record Collection",current_user.profile, class: "dropdown-item" %>
               </li>
               <li>
                 <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "dropdown-item" %>

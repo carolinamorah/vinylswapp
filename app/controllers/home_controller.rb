@@ -14,18 +14,13 @@ class HomeController < ApplicationController
   end
 
 
-
-
-    # def dashboard
-    #     if current_user.admin?
-    #       @vinyls_count = Vinyl.all.count
-    #       @completed_swaps_count = Offer.where(state: 1).count
-    #      ### charts
-    #       @monthly_completed_swaps = Offer.where(state: 1).group_by_month(:created_at).count
-    #       @vinyls_by_owner = Vinyl.joins(:user).group("users.collectionist_name").count
-    #       a = Vinyl.joins(:offers).where(offers: {state: 1}).group(:title).count
-    #       @best_vinyls = (a.sort_by(&:last).reverse.first(10).to_h)
-    #     end
-    #     @users_count = User.all.count
-    # end
-end
+  def dashboard
+    if current_user 
+      @profile = Profile.find_by(params[current_user.id])  
+    
+      @daily_requests = Offer.group_by_minute(:created_at).where(offer_state: 0, owner_id: current_user.id).count
+      @daily_completed_swaps = Offer.where(offer_state: 1, owner_id: current_user.id).group_by_day(:created_at).count
+    end
+  end
+  
+end  

@@ -1,0 +1,51 @@
+<%= form_with(model: @profile, local: true) do |form| %>
+    <div class="modal" id="<%= @profile.id %>" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title">Editing Profile</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="field">
+                            <%= form.label :avatar %><br/>
+                            <%= form.file_field :avatar %>
+                        </div>
+
+                        <div class="field">
+                            <%= form.hidden_field :user_id%>
+                        </div>
+                    
+                        <div class="field">
+                            <%= form.label :bio %><br/>
+                            <%= form.text_area :bio %>
+                        </div>
+                    
+                        <div class="field">
+                            <%= form.label :state %><br/>
+                            <%= form.text_field :state %>
+                        </div>
+
+                        <div class="field">
+                            <%= form.label :municipality %><br/>
+                            <%= form.text_field :municipality %>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                  <%= form.submit "Save", class: "btn btn-primary btn-sm"%>
+                </div>
+            </div>
+        </div>
+    </div>
+<% end %>
+
+
+
+
+
+
+
+
+               

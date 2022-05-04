@@ -3,49 +3,11 @@
     <div class="row">
       <div class="col-xl-12 mx-auto">
         <div class="cta-inner bg-faded text-center rounded">
-    
-            <h2 class="section-heading mb-5">
-              <span class="section-heading-lower">Dashboard</span>
-            </h2>
-            <div class="row justify-content-sm-center">
-              <div class="col-sm-3">
-                <div class="card">
-                  <div class="card-body">
-                    <h1 class="card-title">
-                      <% if current_user[0]? %>
-                        <%= link_to @users_count, users_list_path %>
-                      <% else %>
-                        <%= @users_count %>
-                      <% end %>
-                    </h1>
-                    <p class="card-text">Registered users.</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-3">
-                <div class="card">
-                  <div class="card-body">
-                    <h1 class="card-title"><%= link_to @completed_swaps_count, offers_path %></h1>
-                    <p class="card-text">Completed swaps.</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-3">
-                <div class="card">
-                  <div class="card-body">
-                    <h1 class="card-title"><%= link_to @vinyls_count, vinyl_list_path %></h1>
-                    <p class="card-text">Listed Vinyls.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-         
-        
             <h2 class="section-heading my-5">
               <span class="section-heading-lower">Chart Overview</span>
             </h2>
-            #<%= render "main/charts" %>
-          
+       
+            <%= render 'charts' %>
         </div>
       </div>
     </div>

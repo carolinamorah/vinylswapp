@@ -9,12 +9,19 @@ require 'faker'
 
 code = "password"
 
-50.times do 
-    User.create(
-       email: "user#{rand(100..200)}@example.com",
-       collectionist_name: Faker::Name.name,
-       password: code)
-end
+# 50.times do 
+#     User.create(
+#        email: "user#{rand(100..200)}@example.com",
+#        collectionist_name: Faker::Name.name,
+#        password: code)
+# end
+
+# # Géneros musicales
+# 15.times do
+#    Category.create(
+#        genre: Faker::Music.genre
+#    )
+# end
+#User.create!(collectionist_name:"UserAdmin", email: 'admin@example.com', password: "password", role:1) if Rails.env.development?
 
 
-AdminUser.create!(email: 'admin@example.com', password: code, password_confirmation: 'password') if Rails.env.development?

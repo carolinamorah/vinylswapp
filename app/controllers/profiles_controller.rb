@@ -1,11 +1,14 @@
 class ProfilesController < ApplicationController
   before_action :set_profile, only: %i[show edit update destroy upvote downvote]
+  before_action :authenticate_user!
+  
 
   def index
     @profiles = Profile.all
   end
 
   def show
+    @profile = Profile.find(params[:id])
     @vinyls = Vinyl.all.order("created_at DESC").where(user_id: @profile.user.id).page(params[:page]).per(4)
   end
 
@@ -13,18 +16,25 @@ class ProfilesController < ApplicationController
     @profile = current_user.build_profile
   end
 
+  def edit
+    @profile = Profile.find(params[:id])
+  end
+
   def create
     @profile = current_user.build_profile(profile_params)
+    @user = User.find(current_user)
+    @profile = Profile.new(@user)
+    @profile.save
 
-    respond_to do |format|
-      if @profile.save
-        format.html { redirect_to @profile, notice: "Profile was successfully created." }
-        format.json { render :show, status: :created, location: @profile }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @profile.errors, status: :unprocessable_entity }
-      end
-    end
+    # respond_to do |format|
+    #   if @profile.save
+    #     format.html { redirect_to @profile, notice: "Profile was successfully created." }
+    #     format.json { render :show, status: :created, location: @profile }
+    #   else
+    #     format.html { render :new, status: :unprocessable_entity }
+    #     format.json { render json: @profile.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   def update
@@ -32,9 +42,11 @@ class ProfilesController < ApplicationController
       if @profile.update(profile_params)
         format.html { redirect_to @profile, notice: "Profile was successfully updated." }
         format.json { render :show, status: :ok, location: @profile }
+        format.js
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @profile.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
@@ -61,7 +73,7 @@ class ProfilesController < ApplicationController
       redirect_to profile_path
     end
   end
-
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_profile
@@ -69,7 +81,6 @@ class ProfilesController < ApplicationController
     end
 
     def profile_params
-      params.require(:profile).permit(:avatar, :bio, :latitude, :longitude, :state, :city, :user_id)
+      params.require(:profile).permit(:avatar, :bio, :latitude, :longitude, :state, :municipality, :user_id, :collectionist_name)
     end
-
 end

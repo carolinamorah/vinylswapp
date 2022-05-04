@@ -12,17 +12,17 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :offeredvinyl_id, "Offered Vinyl" %>
+    <strong><%= form.label :offeredvinyl_id, "Offered Vinyl" %></strong>
     <%= form.select :offeredvinyl_id, options_for_select(current_user.vinyls.where(:status=> 'available').pluck(:title, :id))%>   
   </div>
 
   <div class="field">
-    <%= form.label "Chosen Vinyl:  "%>
+    <strong><%= form.label "Chosen Vinyl:  "%></strong>
     <%= @vinyl.title + ' - ' + @vinyl.author%>
   </div>
 
   <div class="field">
-    <%= form.label :owner_id, 'Owner: ' %>
+    <strong><%= form.label :owner_id, 'Owner: ' %></strong>
     <%= @vinyl.user.collectionist_name %>
   </div>
 
@@ -30,13 +30,8 @@
    <%= form.hidden_field :owner_id, value: @offer.owner_id %>
  </div>
 
-  <div class="field">
-    <%= form.label :end_date %>
-    <%= form.datetime_select :end_date %>
-  </div>
-
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class: "btn btn-outline-dark btn-sm" %>
   </div>
 <% end %>
 

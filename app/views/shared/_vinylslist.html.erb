@@ -6,7 +6,7 @@
           <!-- Vinyl image -->
           <% if vinyl.image.attached? %>
             <%= link_to vinyl do %>
-              <%= image_tag vinyl.image, class: "card-img-top", alt: "#{vinyl.title}" %>
+              <%= image_tag vinyl.image.variant(resize: 222), class: "card-img-top", alt: "#{vinyl.title}" %>
             <% end  %>
           <% end %>
           <div class="card-body">
@@ -21,7 +21,7 @@
           <div class="card-body mx-auto"> 
           <% if vinyl.status === "available" %>            
             <%= link_to new_vinyl_offer_path(vinyl), method: :get do %>
-              <button type="button" class="btn btn-outline-dark btn-sm shadow mt-auto">Swap Request</button>
+              <button type="button" class="srequest btn btn-outline-dark btn-sm shadow mt-auto">Swap Request</button>
             <% end %><br />  
           <% else %>
             <%= button_tag "Swapped", disabled: true, class: "btn btn-outline-secondary btn-sm mt-auto"%>

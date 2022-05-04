@@ -5,13 +5,17 @@ class VinylsController < ApplicationController
   # GET /vinyls or /vinyls.json
   def index
     @vinyls = Vinyl.with_attached_image.all.order("created_at desc").page(params[:page])
+
+    @q = Vinyl.includes(:user).ransack(params[:q])
+    @vinyls = @q.result(distinct: true).page(params[:page])
   end
 
   # GET /vinyls/1 or /vinyls/1.json
   def show
     @vinyl = Vinyl.find(params[:id])
     @owner = @vinyl.user_id
-    @profile = Profile.find_by(user_id: @owner)    
+    @profile = Profile.find_by(user_id: @owner)  
+
   end
 
   # GET /vinyls/new
@@ -71,6 +75,6 @@ class VinylsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def vinyl_params
-      params.require(:vinyl).permit(:title, :author, :released_date, :format, :description, :status, :condition, :category, :image, :user_id, genre: [])
+      params.require(:vinyl).permit(:title, :author, :released_date, :format, :description, :status, :condition, :category, :image, :user_id, {genre: []})
     end
 end

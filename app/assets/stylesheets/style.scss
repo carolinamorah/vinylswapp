@@ -11659,7 +11659,7 @@ body {
       rgba(224, 218, 197, 0.25),
       rgba(224, 215, 183, 0.3)
     ),
-    url("/assets/bg.jpg");
+    image-url("/assets/bg.jpg");
   background-attachment: fixed !important;
   background-position: center !important;
   background-size: cover !important;
@@ -11710,6 +11710,21 @@ p {
   font-weight: 800;
   font-family:'Karla', sans-serif;
   color: #636464;
+}
+
+@media(max-width:1180px) {
+  .section-heading .section-heading-upper {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 800;
+  }
+  .section-heading .section-heading-lower {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 800;
+    font-family:'Karla', sans-serif;
+    color: #636464;
+  }
 }
 
 .bg-faded {
@@ -11875,5 +11890,60 @@ p {
   width: 1.5rem;
 
 }
+
+.search {
+  width: 25vw;
+}
+
+
+.index-mobile {
+  text-align: center;
+}
+
+.icons-navbar-mobile {
+  margin: 1em;
+}
+
+.item-navbar-mobile {
+  margin-bottom: 2em;
+}
+
+hr {
+  width: 97%;
+  background-color: white;
+  margin: 0;
+}
+
+
+@media (min-width: 360px) {
+  .search {
+    width: 58vw;
+  }
+  .form-range {
+    width: 50vw !important;
+    fill: grey;
+  }
+  
+}
+
+@media (min-width: 768px) {
+  .search {
+    width: 25vw;
+  }
+}
+
+@media (min-width: 984px) {
+  .form-range {
+    width: 20vw;
+    fill: grey;
+  }
+}
+
+
+
+
+
+
+
 
 

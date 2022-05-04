@@ -9,13 +9,22 @@
 //
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
-//
-//= require jquery3
+
+//= require jquery/dist/jquery
 //= require jquery_ujs
 //= require turbolinks
 //= require activestorage
+//= require select2
 //= require popper
 //= require bootstrap
-//= require select2
+//= require chartkick
+//= require Chart.bundle
 //= require_tree .
+
+
+var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+  return new bootstrap.Tooltip(tooltipTriggerEl)
+});
+
 

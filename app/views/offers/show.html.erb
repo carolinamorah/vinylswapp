@@ -15,10 +15,5 @@
   <%= @offer.offer_state %>
 </p>
 
-<p>
-  <strong>End date:</strong>
-  <%= @offer.end_date %>
-</p>
-
 <%= link_to 'Edit', edit_vinyl_offer_path(@offer.vinyl_id, @offer) %> |
 <%= link_to 'Back', my_offers_path(current_user.id, @offers) %>

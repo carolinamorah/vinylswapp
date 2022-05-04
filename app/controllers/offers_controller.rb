@@ -38,7 +38,7 @@ class OffersController < ApplicationController
 
     respond_to do |format|
       if @offer.save
-        format.html { redirect_to vinyl_offer_path(params[:vinyl_id], @offer), notice: "Offer was successfully sended to the vinyl owner." }
+        format.html { redirect_to my_offers_path(current_user.id), notice: "Offer was successfully sended to the vinyl owner." }
         format.json { render :show, status: :created, location: @offer }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -73,8 +73,8 @@ class OffersController < ApplicationController
   end
 
   def user_offers
-    @received_offers = Offer.where(owner_id: current_user.id)
-    @offers_sent= current_user.offers
+    @received_offers = Offer.where(owner_id: current_user.id).where.not(offer_state: "declined")
+    @offers_sent= current_user.offers.where.not(offer_state: "accepted")
     @user_id = current_user.id
     @swaps_other = Offer.where(owner_id: @user_id, offer_state: "accepted")
     @swaps_user = Offer.where(user_id: @user_id, offer_state: "accepted") 
@@ -94,16 +94,24 @@ class OffersController < ApplicationController
     offer = Offer.find(params[:id])
     offered_vinyl = Vinyl.find(offer.offeredvinyl_id)
     other_vinyl = Vinyl.find(offer.vinyl_id)
-    if offer 
-        if offer.update(offer_state: "accepted")
-           offered_vinyl.update(user_id: current_user.id)
-            other_vinyl.update(user_id: offer.user_id)
-            offered_vinyl.update(status: "swapped")
-            other_vinyl.update(status: "swapped")
-            
-            flash[:notice] = "Congratulations! You have done a vinyl swap"
-            redirect_to my_offers_path(current_user.id, @offers)
-        end
+    if offer && offer.update(offer_state: "accepted")
+      
+      offered_vinyl.update(user_id: current_user.id)
+      other_vinyl.update(user_id: offer.user_id)
+      offered_vinyl.update(status: "swapped")
+      other_vinyl.update(status: "swapped")
+
+      Offer.where(vinyl_id: offer.vinyl_id).where.not(id: offer.id).update_all(offer_state: "declined")
+      Offer.where(offeredvinyl_id: offer.vinyl_id).where.not(id: offer.id).update_all(offer_state: "declined")
+      Offer.where(vinyl_id: offer.offeredvinyl_id).where.not(id: offer.id).update_all(offer_state: "declined")
+      Offer.where(offeredvinyl_id: offer.offeredvinyl_id).where.not(id: offer.id).update_all(offer_state: "declined")
+      
+      flash[:notice] = "Congratulations! You have done a vinyl swap"
+      redirect_to my_offers_path(current_user.id, @offers) 
+     
+    else 
+      flash[:error] = "No se pudo concretar el swap"
+      redirect_to vinyls_path
     end
   end
 

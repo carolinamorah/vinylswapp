@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  root to: "home#index"
+
   resources :profiles do
     member do
       put "like" => "profiles#upvote"
@@ -23,16 +25,17 @@ Rails.application.routes.draw do
   
     devise_for :users, controllers: {
       sessions: 'users/sessions',
-      registrations: 'users/registrations'
+      registrations: 'users/registrations',
+      omniauth_callbacks: 'users/omniauth_callbacks'
     }
 
     devise_scope :user do  
       get '/users/sign_out' => 'devise/sessions#destroy'     
     end
   
-  root to: "home#index"
 
   get "offers_list", to: "home#offers_list"
+  get "dashboard", to: "home#dashboard"
   
   get '/users/:user_id/offers', to: 'offers#user_offers', as: 'my_offers'
 

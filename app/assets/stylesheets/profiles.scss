@@ -15,7 +15,7 @@ body {
 
 .main {
     height: auto;
-    width: 27vw;
+    width: 30vw;
     background-color: #d4d0c9ef;
     margin-left: 12vw;
     position: relative;
@@ -138,4 +138,14 @@ tr {
 
 path:hover{
     fill:rgba(215, 212, 210, 0.391) !important;
+}
+
+.avatar {
+    height: 4.3vh;
+    width: 4.3vw;
+}
+
+.input-search {
+    width: 150vw;
+
 }

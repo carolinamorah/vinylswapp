@@ -56,6 +56,7 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
+  gem 'dotenv-rails'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -63,6 +64,11 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 #gemas_nuevas
 gem 'devise'
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'omniauth-rails_csrf_protection', '~> 1.0'
+gem 'omniauth-github', github: 'omniauth/omniauth-github', branch: 'master'
+gem 'activerecord-session_store'
 gem 'bootstrap', '~> 5.1.3'
 gem 'jquery-rails'
 gem 'faker'
@@ -73,4 +79,13 @@ gem 'kaminari'
 gem 'carrierwave', '~> 2.0'
 gem 'acts_as_votable'
 gem "aws-sdk-s3"
+gem "mini_magick"
+gem "image_processing", "~> 1.12"
+gem 'ransack'
+gem 'geocoder'
+gem 'chartkick'
+gem "groupdate"
+gem 'sendgrid-ruby'
+
+
 

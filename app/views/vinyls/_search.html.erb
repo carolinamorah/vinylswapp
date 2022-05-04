@@ -1,0 +1,49 @@
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+  <div class="container">
+    <div class="offcanvas-header">
+      <h3 class="offcanvas-title justify-content-center" id="offcanvasExampleLabel">Filters</h3>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+    
+      <form>
+        <%= search_form_for @q do |f|%>
+          <div class="mb-3">
+            <%= f.label  :released_date_eq, "Release Year: "%>
+            <%= f.date_field :released_date_eq, placeholder: "1970...", class: 'form-control form-control-sm' %>
+            <%= f.submit 'Buscar', class: "btn btn-outline-dark btn-sm"  %>
+          </div>
+          <div class="mb-3">
+            <%= f.label  :genre_eq, "Genre: "%>
+            <% genre_array = Category.all.map {|c| [c.genre, c.id]} %>
+            <%= f.select :genre_eq, options_for_select(genre_array, @q.genre_eq), include_blank: "All", class: "input-search form-control form-control-sm"%>
+            <%= f.submit 'Filter', class: "btn btn-outline-dark btn-sm mb-3"%>
+          </div>
+          <div class="mb-3">
+            <%= f.label "Near to you: "%></br>
+            <input type="range" class="form-range inputDiv i1" min="1" max="200" id="customRange2"><span> km </span>
+            <%= f.submit 'Filter', class: "btn btn-outline-dark btn-sm" %></span>
+          </div>
+            <%= link_to 'Limpiar', vinyls_path, class: 'btn btn-primary btn-sm text-center justify-content-center', style:"color: black !important; border: 1px solid; margin-left: auto;"%>
+        <% end %>
+      </form> 
+   </div>
+  </div>  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+

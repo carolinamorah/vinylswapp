@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+
 <br>
 <div class="container border border-warning border-2 bg-light">
  <h1 class="text-center mt-4"> Offers Received</h1>
@@ -64,7 +64,7 @@
               <td><%= offer.receivervinyl.title %></td>
               <td><%= link_to offer.user.collectionist_name%></td>
               <td><%= offer.offer_state %></td>
-              <td><%= offer.created_at.strftime("%Y-%m-%d")  %></td>
+              <td><%= offer.created_at.strftime("%Y-%m-%d") %></td>
               <td><%= button_to 'Cancel', user_offer_path(offer.user_id, offer.id), method: :delete, data: {confirm: "Are you sure?"}%></td>
             </tr>
           <% end %>

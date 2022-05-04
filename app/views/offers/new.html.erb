@@ -1,5 +1,19 @@
-<h1>New Offer</h1>
-
-<%= render 'form', offer: @offer %>
-
-<%= link_to 'Back', vinyls_path %>
+<section class="page-section">
+  <div class="container">
+    <div class="about-heading-content">
+      <div class="row">
+        <div class="col-md-9 mx-auto">
+          <div class="bg-faded shadow-lg border border-warning rounded p-5">
+            <h2 class="section-heading mb-4">
+              <span class="section-heading-lower text-center">New Offer</span>
+            </h2>
+            <p class="justify-content-center">
+              <%= render 'form', offer: @offer %>
+              <%= link_to 'Back', vinyls_path %>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> 
