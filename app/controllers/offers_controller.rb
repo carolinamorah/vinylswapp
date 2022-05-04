@@ -73,7 +73,7 @@ class OffersController < ApplicationController
   end
 
   def user_offers
-    @received_offers = Offer.where(owner_id: current_user.id).where.not(offer_state: ["declined", "accepted")
+    @received_offers = Offer.where(owner_id: current_user.id).where.not(offer_state: ["declined", "accepted"])
     @offers_sent= current_user.offers.where.not(offer_state: "accepted")
     @user_id = current_user.id
     @swaps_other = Offer.where(owner_id: @user_id, offer_state: "accepted")
