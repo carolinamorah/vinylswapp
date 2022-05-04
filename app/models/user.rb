@@ -20,7 +20,7 @@ class User < ApplicationRecord
   after_create :set_profile
 
   def set_profile
-    self.profile = Profile.create(city:'Santiago', state:'Región Metropolitana')
+    self.profile = Profile.create()
   end
 
   def self.from_omniauth(auth)
