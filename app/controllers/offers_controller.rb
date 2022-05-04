@@ -110,7 +110,7 @@ class OffersController < ApplicationController
       
       flash[:notice] = "Congratulations! You have done a vinyl swap"
 
-      OfferNotifierMailer.send_completed_swap_email(@user).deliver
+      OfferNotifierMailer.send_completed_swap_email(@user).deliver_later
       
 
       redirect_to my_offers_path(current_user.id, @offers)  
