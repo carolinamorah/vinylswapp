@@ -91,6 +91,8 @@ class OffersController < ApplicationController
   end 
 
   def accept
+    @user = current_user
+    
     offer = Offer.find(params[:id])
     offered_vinyl = Vinyl.find(offer.offeredvinyl_id)
     other_vinyl = Vinyl.find(offer.vinyl_id)
@@ -109,10 +111,9 @@ class OffersController < ApplicationController
       flash[:notice] = "Congratulations! You have done a vinyl swap"
 
       OfferNotifierMailer.send_completed_swap_email(@user).deliver
-      redirect_to my_offers_path(current_user.id, @offers) 
-
       
-     
+
+      redirect_to my_offers_path(current_user.id, @offers)  
     else 
       flash[:error] = "No se pudo concretar el swap"
       redirect_to vinyls_path
