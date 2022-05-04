@@ -18,7 +18,7 @@ class HomeController < ApplicationController
     if current_user 
       @profile = Profile.find_by(params[current_user.id])  
     
-      @daily_requests = Offer.group_by_minute(:created_at).where(offer_state: 0, owner_id: current_user.id).count
+      @daily_requests = Offer.group_by_day(:created_at).where(offer_state: [0, 1, 2], owner_id: current_user.id).count
       @daily_completed_swaps = Offer.where(offer_state: 1, owner_id: current_user.id).group_by_day(:created_at).count
     end
   end

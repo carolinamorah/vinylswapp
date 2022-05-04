@@ -1,8 +1,8 @@
 <h2 class="section-heading my-5">
   <span class="section-heading-upper">Requests per Minutes </span>
 </h2>
-<%= line_chart @daily_requests, ytitle: "# Requests", colors: ["#825f58"] %>
+<%= bar_chart @daily_requests, ytitle: "# Requests", colors: ["#E39D2A"] %>
 <h2 class="section-heading my-5">
-  <span class="section-heading-upper">Daily Completed Swaps</span>
+  <span class="section-heading-upper">Monthly Completed Swaps</span>
 </h2>
-<%= line_chart @daily_completed_swaps, ytitle: "# Swaps", colors: ["#825f58"] %>
+<%= line_chart @daily_completed_swaps, ytitle: "# Swaps", colors: ["E39D2A"] %>

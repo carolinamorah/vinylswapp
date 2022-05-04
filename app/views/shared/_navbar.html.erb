@@ -39,11 +39,14 @@
                 <li>
                   <%= link_to "My Profile", current_user.profile, class: "dropdown-item" %>
                 </li>
+                <li>
+                  <%= link_to "My Record Collection",current_user.profile, class: "dropdown-item" %>
+                </li>
               <% end %>
-              <li>
-                <%= link_to "My Record Collection",current_user.profile, class: "dropdown-item" %>
-              </li>
-              <li>
+                <li>
+                  <%= link_to "Dashboard", dashboard_path, class: "dropdown-item" %>
+                </li>
+                <li>
                 <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
               </li>
             </ul>

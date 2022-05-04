@@ -19,8 +19,8 @@
         <tbody>
           <% @received_offers.each do |offer| %>
             <tr>
-              <td><%= offer.offeredvinyl.title %></td>
-              <td><%= link_to offer.receivervinyl.title%></td>
+              <td><%= link_to offer.offeredvinyl.title %></td>
+              <td><%= offer.receivervinyl.title%></td>
               <td><%= link_to User.find(offer.user_id).collectionist_name%></td>
               <td><%= offer.offer_state %></td>
               <td><%= offer.created_at.strftime("%Y-%m-%d")  %></td>
