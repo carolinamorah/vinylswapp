@@ -87,6 +87,9 @@ gem 'geocoder'
 gem 'chartkick'
 gem "groupdate"
 gem 'sendgrid-ruby'
+gem 'sentry-ruby'
+gem 'sentry-rails'
+
 
 
 

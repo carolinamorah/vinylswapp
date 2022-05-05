@@ -5,38 +5,53 @@
     </h2>
    
     <div class="py-4 page-section cta-inner bg-faded">
-      <div class="d-grid gap-2 d-md-flex flex-row justify-content-md-start mt-2">
+      <div class="d-grid gap-2 d-md-flex flex-row justify-content-md-center mt-2">
         <%= search_form_for @q do |f| %>
-          <div class="search input-group p-2 bd-highlight ">
+          <div class="search input-group p-2 bd-highlight">
             <%= f.search_field :title_or_author_cont, placeholder:"Search for band/album...", class: "form-control form-control-sm"%>
-            <%= f.submit "Search", class: "btn btn-outline-dark btn-sm" %>
-
-            <a class="btn btn-primary btn-sm ms-2" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">Advanced Search </a>
+            <%= f.submit "Search", class: "btn btn-outline-dark shadow btn-sm" %>
           </div>
+          <p> Release Date: </p>
+          <div class="search input-group mb-3 mt-2"">
+           
+            <%= f.date_field :released_date_eq, placeholder: "1970...", class: 'form-control form-control-sm'%>
+            <%= f.submit 'Filter', class: "btn btn-outline-dark shadow  btn-sm"  %>
+          </div>
+          <div class="filter mb-3">
+            <%= f.label  :genre_eq, "Genre: "%>
+            <% genre_array = Category.all.map {|c| [c.genre, c.id]} %>
+            <%= f.select :genre_eq, options_for_select(genre_array, @q.genre_eq), include_blank: "All", class: "form-control-sm", style:"width: 100px"%>
+            <%= f.submit 'Filter', class: "btn btn-outline-dark shadow  btn-sm mb-3"%>
+          </div>
+          <%= link_to 'Clean All', vinyls_path, class: 'btn btn-primary shadow btn-sm text-center justify-content-center'%>
         <% end %>
-        <div class="input-group p-2 bd-highlight justify-content-md-end">
-            <%= sort_link(@q, :condition, default_order: :asc) do %>
-              <strong style="text-decoration: underline">Sort by condition</strong>
-            <% end %>
-
-            <%= link_to new_vinyl_path do %>
-              <button class="btn btn-outline-dark shadow btn-sm ms-3" type="button">Add Vinyls <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-vinyl-fill" viewBox="0 0 16 16">
-              <path d="M8 6a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm0 3a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
-              <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4 8a4 4 0 1 0 8 0 4 4 0 0 0-8 0z"/>
-              </svg></button>
-            <% end %>
-        </div> 
       </div>
+      <div class="input-group p-2 bd-highlight justify-content-md-end mt-5">
+          <%= sort_link(@q, :condition, default_order: :asc) do %>
+            <strong style="text-decoration: underline">Sort by condition</strong>
+          <% end %>
+
+          <%= link_to new_vinyl_path do %>
+            <button class="btn btn-outline-dark shadow  btn-sm ms-3" type="button">Add Vinyls <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-vinyl-fill" viewBox="0 0 16 16">
+            <path d="M8 6a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm0 3a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4 8a4 4 0 1 0 8 0 4 4 0 0 0-8 0z"/>
+            </svg></button>
+          <% end %>
+      </div> 
+     
 
         <%= render 'shared/vinylslist' %>       
       </p> 
-    </div>
-    <div class="pagination justify-content-center">
-      <h5 class="m-4 text-center p-3">
-        <span><%= paginate @vinyls %></span>
-      </h5>
+
+      <div class="pagination justify-content-center">
+        <h5 class="m-4 text-center p-3">
+          <span><%= paginate @vinyls %></span>
+        </h5>
+      </div>
     </div>
   </div>
 </section>
 
-<%= render 'search' %>
+
+
+<!--<a class="btn btn-primary btn-sm ms-2" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">Advanced Search </a>-->
