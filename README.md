@@ -1,24 +1,51 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+- Heroku: https://floating-springs-40022.herokuapp.com/
 
-Things you may want to cover:
+### Sobre la aplicación
 
-* Ruby version
+Esta es una aplicación de trueque de vinilos con dos niveles de usuarios
 
-* System dependencies
+- administrador
+- colleccionista
 
-* Configuration
+Los trueques se llevan a cabo por medio del envío de solicitudes junto con una propuesta para el intercambio, propuestas que el owner puede rechazar o aceptar:
 
-* Database creation
+- Los usuarios pueden buscar vinilos por medio de un buscador simple y otros con filtros y visitar los perfiles de los owners desde el show del vinilo y la lista de coleccionistas que está en el navbar.
+- Cada coleccionista tiene un sistema de evaluación por likes para mostrar publicamente cuál ha sido su desempeño en la plataforma.
+- Aún no se implementa la forma de contacto entre los usuarios para concretar un trueque, por lo que se establecerá de manera interna por medio de los mails expuestos en sus perfiles.
 
-* Database initialization
 
-* How to run the test suite
+### Deployment
 
-* Services (job queues, cache servers, search engines, etc.)
+1. Requisitos: ruby '2.6.6' y 'rails', '~> 5.2.7'
+2. Descargar la aplicación
+3. Migrar la base de datos y cargar las gemas enlazadas
+4. Cargar el seed para incluir usuarios
+5. Hay 2 credenciales disponibles:
 
-* Deployment instructions
+- usuario: admin@example.com
+- contraseña: password
 
-* ...
+- usuario: carolina@example.com
+- contraseña: 123456
+
+
+- Los usuarios nuevos tienen acceso como coleccionistas y se les crea de forma automática un perfil para subir su colección de vinilos al registrarse, pero el usuario admin puede dar más permisos desde su dashboard de Active Admin (https://floating-springs-40022.herokuapp.com/admin/login)
+
+### Integración
+
+La aplicación cuenta con un un dashboard para los coleccionistas con chartkick, donde pueden ver indicadores de las ofertas que han recibido y los truques que han concretado
+
+### Niveles de usuario
+
+#### Administrador
+
+El administrador tiene acceso especial a un dashboard completo con información de usuarios con Active Admin. En la vista tiene acceso a eliminar y editar todos los perfiles y vinilos y tiene una vista especial con la lista de ofertas que se han hecho en sus estados pendiente, aceptado y rechazado.
+
+#### Colleccionista
+
+El coleccionista, luego de registrarse, puede subir vinilos a su perfil y editar sus datos. Tiene acceso a revisar otros perfiles solo para hacer ofertas y calificar a los usuarios con los que ha concretado trueques.
+
+
+
