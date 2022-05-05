@@ -57,11 +57,19 @@
       <%= form.hidden_field :user_id %>        
     </div>
     <br>
-    <div class="field">
-      <%= form.label :genre %><br />
-      <% genre_array = Category.all.map {|c| [c.genre, c.id]} %>
-      <%= form.select :genre, options_for_select(genre_array), {}, :multiple => true, style:"width: 400px;"%>
-    </div>
+   <div class="row">
+    <div class="field col-md-4">
+    <%= form.label :categories, "Categories:" %><br />
+        <%= form.collection_check_boxes(:category_ids,
+                                        Category.all,
+                                        :id,
+                                        :genre) do |b| %>
+        <%= b.label class:"label-checkbox" do%>
+            <%=b.check_box + b.text%>
+        <%end%>
+    <% end %>
+  </div>
+  </div>
     <br>
     <br>    
 

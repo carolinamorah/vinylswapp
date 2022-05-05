@@ -1,5 +1,5 @@
 <br><br>
-<section class="pt-5">
+<section class="pt-5 mb-5">
   <div class="container">
     <div class="card mb-3 shadow-lg bg-faded">
       <div class="row g-0">
@@ -36,7 +36,7 @@
             </p>
             <p>
                 <strong>Genres:</strong>
-                <%= @vinyl.genre %>  
+                <%= @vinyl.categories.map(&:genre).join(', ') %>  
             </p>
 
             <div class="d-flex pt-4">
@@ -70,14 +70,15 @@
       </div>
     </div>
   </section>
-  <section class="page-section cta d-none d-lg-block">
-  <div class="container">     
-    <h2 class="section-heading mb-4 cta-inner bg-faded text-center rounded p-2">
-      <span class="section-heading-lower">Related Vinyls</span>
-    </h2
+  <br><br><br><br>
+  <!--<section class="page-section cta d-none d-lg-block">-->
+  <!--<div class="container">-->   
+    <!--<h2 class="section-heading mb-4 cta-inner bg-faded text-center rounded p-2">-->
+      <!--<span class="section-heading-lower">Related Vinyls</span>-->
+    <!--</h2-->
     <!-- Agregar lista de vinilos similares-->
-  </div>
-</section>
+ <!-- </div>-->
+<!--</section>-->
 
 
 

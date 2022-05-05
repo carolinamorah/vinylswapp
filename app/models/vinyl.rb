@@ -1,11 +1,8 @@
 class Vinyl < ApplicationRecord
   belongs_to :user
-  has_many :category_vinyls
   has_many :offers, dependent: :destroy
-  has_many :categories, through: :category_vinyls
+  has_and_belongs_to_many :categories
   has_one_attached :image
-
-  accepts_nested_attributes_for :category_vinyls
 
   enum status: [:available, :swapped]
 

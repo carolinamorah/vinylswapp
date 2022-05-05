@@ -109,7 +109,7 @@ class OffersController < ApplicationController
       Offer.where(offeredvinyl_id: offer.offeredvinyl_id).where.not(id: offer.id).update_all(offer_state: "declined")
       
       flash[:notice] = "Congratulations! You have done a vinyl swap"
-      OfferNotifierMailer.send_completed_swap_email(current_user).deliver_now
+      #OfferNotifierMailer.send_completed_swap_email(current_user).deliver_now
       redirect_to my_offers_path(current_user.id, @offers)  
 
      

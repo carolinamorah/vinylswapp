@@ -75,6 +75,6 @@ class VinylsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def vinyl_params
-      params.require(:vinyl).permit(:title, :author, :released_date, :format, :description, :status, :condition, :category, :image, :user_id, :municipality, :state, {genre: []})
+      params.require(:vinyl).permit(:title, :author, :released_date, :format, :description, :status, :condition, :category, :image, :user_id, :municipality, :state,  {category_ids: []})
     end
 end

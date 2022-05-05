@@ -17,7 +17,8 @@
 
 
 $(document).ready(function() {
-   $('#vinyl_genre').select2();
+   $('#vinyl_categories').select2();
+   multiple:true
 });
 
 

@@ -17,14 +17,9 @@
             <%= f.date_field :released_date_eq, placeholder: "1970...", class: 'form-control form-control-sm'%>
             <%= f.submit 'Filter', class: "btn btn-outline-dark shadow  btn-sm"  %>
           </div>
-          <div class="filter mb-3">
-            <%= f.label  :genre_eq, "Genre: "%>
-            <% genre_array = Category.all.map {|c| [c.genre, c.id]} %>
-            <%= f.select :genre_eq, options_for_select(genre_array, @q.genre_eq), include_blank: "All", class: "form-control-sm", style:"width: 100px"%>
-            <%= f.submit 'Filter', class: "btn btn-outline-dark shadow  btn-sm mb-3"%>
-          </div>
+          
           <%= link_to 'Clean All', vinyls_path, class: 'btn btn-primary shadow btn-sm text-center justify-content-center'%>
-        <% end %>
+        <%end%>
       </div>
       <div class="input-group p-2 bd-highlight justify-content-md-end mt-5">
           <%= sort_link(@q, :condition, default_order: :asc) do %>
@@ -38,7 +33,7 @@
             </svg></button>
           <% end %>
       </div> 
-     
+       
 
         <%= render 'shared/vinylslist' %>       
       </p> 
@@ -54,4 +49,3 @@
 
 
 
-<!--<a class="btn btn-primary btn-sm ms-2" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">Advanced Search </a>-->

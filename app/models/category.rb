@@ -1,6 +1,5 @@
 class Category < ApplicationRecord
-    has_many :vinyls, through: :category_vinyls
-    has_many :category_vinyls
+    has_and_belongs_to_many :categories
 
     scope :all_categories, -> {where.not(id: nil)}
 end
