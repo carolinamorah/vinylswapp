@@ -9,8 +9,8 @@ require 'faker'
 
 code = "password"
 
-User.create!(collectionist_name:"UserAdmin", email: 'admin@example.com', password: "password", role:1) 
-AdminUser.create!(name:"UserAdmin", email: 'adminuser@example.com', password: code)
+# User.create!(collectionist_name:"UserAdmin", email: 'admin@example.com', password: "code", role:1) 
+# AdminUser.create!(email: 'adminuser@example.com', password: code)
 
 50.times do 
     User.create(
@@ -19,23 +19,25 @@ AdminUser.create!(name:"UserAdmin", email: 'adminuser@example.com', password: co
        password: code)
 end
 
-# Géneros musicales
+Géneros musicales
 10.times do
    Category.create(
        genre: Faker::Music.genre
-   ).distinct
+   )
 end
+
+vinilos
 
 60.times do  
     vinyl = Vinyl.create(
         title: Faker::Music.album,
         description: Faker::Lorem.sentence(word_count: 5),
-        author: Faker::Music.
+        author: Faker::Music.band
         user_id: users.sample
     )
     random = rand(1..10)
     vinyl.image.attach(io: File.open("app/assets/images/00"+"#{random}"+".jpg"), filename: "00"+"#{random}"+".jpg", content_type: 'image/jpg')
-  end
+end
 
 
 
