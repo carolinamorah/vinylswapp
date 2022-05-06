@@ -6,9 +6,6 @@ class CategoriesController < ApplicationController
   # GET /categories or /categories.json
   def index
     @categories = Category.all
-
-    @q = Category.includes(:vinyl).ransack(params[:q])
-    @categories = @q.result(distinct: true).page(params[:page])
   end
 
   # GET /categories/1 or /categories/1.json
