@@ -1,6 +1,7 @@
 # README
 
 - Heroku: https://floating-springs-40022.herokuapp.com/
+- http://vinylswapp.xyz/
 
 ### Sobre la aplicación
 
