@@ -25,10 +25,10 @@ Los trueques se llevan a cabo por medio del envío de solicitudes junto con una 
 4. Cargar el seed para incluir usuarios
 5. Hay 2 credenciales disponibles:
 
-- usuario: admin@example.com
+- usuario: adminuser@example.com
 - contraseña: password
 
-- usuario: carolina@example.com
+- usuario: carolina@example.com (o crear un usuario propio con sign up)
 - contraseña: 123456
 
 
