@@ -19,6 +19,7 @@
 //= require bootstrap
 //= require chartkick
 //= require Chart.bundle
+//= require navbar
 //= require_tree .
 
 

@@ -11674,7 +11674,7 @@ p {
 }
 
 .site-heading {
-  margin-top: 5rem;
+  margin-top: 8rem;
   margin-bottom: 5rem;
   text-transform: uppercase;
   line-height: 1;
@@ -11942,6 +11942,14 @@ hr {
 .select2 {
   width: 250px !important; 
 }
+
+.fixed-top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
 
 
 

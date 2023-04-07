@@ -8,11 +8,11 @@
       <div class="d-grid gap-2 d-md-flex flex-row justify-content-md-center mt-2">
         <%= search_form_for @q do |f| %>
           <div class="search input-group p-2 bd-highlight">
-            <%= f.search_field :title_or_author_cont, placeholder:"Search for band/album...", class: "form-control form-control-sm"%>
+            <%= f.search_field :title_or_author_cont, placeholder:"Search for band/album...", class: "form-control form-control-sm", value: params[:q]&.dig(:title_or_author_cont)&.downcase %>
             <%= f.submit "Search", class: "btn btn-outline-dark shadow btn-sm" %>
           </div>
           <p> Release Date: </p>
-          <div class="search input-group mb-3 mt-2"">
+          <div class="search input-group mb-3 mt-2">
            
             <%= f.date_field :released_date_eq, placeholder: "1970...", class: 'form-control form-control-sm'%>
             <%= f.submit 'Filter', class: "btn btn-outline-dark shadow  btn-sm"  %>

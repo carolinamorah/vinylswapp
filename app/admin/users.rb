@@ -14,15 +14,15 @@ ActiveAdmin.register User do
     #   permitted << :other if params[:action] == 'create' && current_user.admin?
     #   permitted
     # end
-  
+
     permit_params :collectionist_name, :email, :user_id, :role
-  
+
     index do
           column 'Name', :collectionist_name
 
           column 'Role' do |user|
-			user.role.to_s
-		  end
+               user.role.to_s
+            end
 
           
   

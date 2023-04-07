@@ -21,11 +21,20 @@ users = 60.times.map do
 end
 
 #Géneros musicales
+existing_genres = Set.new
+
 10.times do
-   Category.create(
-       genre: Faker::Music.genre
-   )
+  genre = Faker::Music.genre
+
+  while existing_genres.include?(genre)
+    genre = Faker::Music.genre
+  end
+
+  existing_genres << genre
+
+  Category.create(genre: genre)
 end
+
 
 #vinilos
 values = ["new", "used"]
