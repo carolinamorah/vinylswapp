@@ -20,19 +20,18 @@ Los trueques se llevan a cabo por medio del envío de solicitudes junto con una 
 ### Deployment
 
 1. Requisitos: ruby '2.6.6' y 'rails', '~> 5.2.7'
-2. Descargar la aplicación
-3. Migrar la base de datos y cargar las gemas enlazadas
-4. Cargar el seed para incluir usuarios
-5. Hay 2 credenciales disponibles:
+2. Clonar la aplicación
+3. bundle install
+4. rails db:create
+5. rails db:migrate
+6. Cargar el seed para crear usuarios y vinilos (rails db:seed)
+7. Hay 2 credenciales disponibles:
 
 - usuario: adminuser@example.com
 - contraseña: password
 
-- usuario: carolina@example.com (o crear un usuario propio con sign up)
-- contraseña: 123456
 
-
-- Los usuarios nuevos tienen acceso como coleccionistas y se les crea de forma automática un perfil para subir su colección de vinilos al registrarse, pero el usuario admin puede dar más permisos desde su dashboard de Active Admin (https://floating-springs-40022.herokuapp.com/admin/login)
+- Los usuarios nuevos tienen acceso como coleccionistas y se les crea de forma automática un perfil para subir su colección de vinilos al registrarse, pero el usuario admin puede dar más permisos desde su dashboard de Active Admin ('localhost:3000/admin/login', 'https://floating-springs-40022.herokuapp.com/admin/login')
 
 ### Integración
 
