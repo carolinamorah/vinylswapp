@@ -1,7 +1,7 @@
 # README
 
-- Heroku: https://floating-springs-40022.herokuapp.com/
-- http://vinylswapp.xyz/
+- Render: https://vinylswapp.onrender.com/
+- Dashboard Admin : https://vinylswapp.onrender.com/admin/login
 
 ### Sobre la aplicación
 
@@ -31,7 +31,7 @@ Los trueques se llevan a cabo por medio del envío de solicitudes junto con una 
 - contraseña: password
 
 
-- Los usuarios nuevos tienen acceso como coleccionistas y se les crea de forma automática un perfil para subir su colección de vinilos al registrarse, pero el usuario admin puede dar más permisos desde su dashboard de Active Admin ('localhost:3000/admin/login', 'https://floating-springs-40022.herokuapp.com/admin/login')
+- Los usuarios nuevos tienen acceso como coleccionistas y se les crea de forma automática un perfil para subir su colección de vinilos al registrarse, pero el usuario admin puede dar más permisos desde su dashboard de Active Admin ('localhost:3000/admin/login')
 
 ### Integración
 
