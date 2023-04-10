@@ -11,8 +11,16 @@
           <% end %>
           <div class="card-body">
             <!-- vinyl name-->
-            <h5 class="card-title fw-bolder text-center "><%= vinyl.title %></h5>
-            <h6 class="card-title text-center"><%= vinyl.author %></h6>
+            <h5 class="card-title fw-bolder text-center">
+              <%= link_to vinyl_path(vinyl), style: "text-decoration: none;" do %>
+                <%= vinyl.title %>
+              <% end %>
+            </h5>
+            <h6 class="card-title text-center">
+              <%= link_to vinyl_path(vinyl), style: "text-decoration: none;" do %>
+                <%= vinyl.author %>
+              <% end %>
+            </h6>
           </div>
             <ul class="list-group list-group-flush">
               <li class="list-group-item text-muted text-center"><%= vinyl.condition %></li>
