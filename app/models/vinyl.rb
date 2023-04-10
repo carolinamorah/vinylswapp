@@ -8,8 +8,23 @@ class Vinyl < ApplicationRecord
 
   paginates_per 12
 
-  validates :title, :author, :description, :status, :image, presence: true
-  validates :description, length: {maximum: 300, too_long: "%#{count} exceeds the character limit."}
- 
+  validates :title, :author, :description, :status, presence: true
+  validate :image_attached
+  validate :description_length
+
+  private
+
+  def image_attached
+    unless image.attached?
+      errors.add(:image, "must be attached")
+    end
+  end
+
+  def description_length
+    if description.present? && description.length > 300
+      errors.add(:description, "exceeds the character limit (300)")
+    end
+  end
+
 end
 
