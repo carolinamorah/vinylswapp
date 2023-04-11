@@ -15,11 +15,15 @@ class HomeController < ApplicationController
 
 
   def dashboard
-    if current_user 
+    if current_user.admin?
+      @total_users = User.count
+      @daily_requests = Offer.group_by_month_of_year(:created_at, format: "%b").where(offer_state: [0, 1, 2]).count
+      @daily_completed_swaps = Offer.where(offer_state: 1).group_by_month_of_year(:created_at, format: "%b").count  
+      render :admin_dashboard
+    elsif current_user 
       @profile = Profile.find_by(params[current_user.id])  
-    
-      @daily_requests = Offer.group_by_day(:created_at).where(offer_state: [0, 1, 2], owner_id: current_user.id).count
-      @daily_completed_swaps = Offer.where(offer_state: 1, owner_id: current_user.id).group_by_day(:created_at).count
+      @daily_requests = Offer.where(owner_id: current_user.id).group_by_day_of_week(:created_at, format: "%a").count
+      @daily_completed_swaps = Offer.where(offer_state: 1, user_id: current_user.id).group_by_day_of_week(:created_at, format: "%a").count
     end
   end
   

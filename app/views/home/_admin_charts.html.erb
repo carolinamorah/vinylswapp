@@ -1,0 +1,8 @@
+<h2 class="section-heading my-5">
+  <span class="section-heading-upper">Offers sended by Month </span>
+</h2>
+<%= column_chart @daily_requests, xtitle: "Months", ytitle: "# Offers", colors: ["#E39D2A"], download: {filename: "offers_received_chart"} %>
+<h2 class="section-heading my-5">
+  <span class="section-heading-upper">Swaps Completed by Month</span>
+</h2>
+<%= column_chart @daily_completed_swaps, xtitle: "Months", ytitle: "# Swaps", download: {filename: "accepted_offers_sended_chart"}, colors: ["#E39D2A"] %>

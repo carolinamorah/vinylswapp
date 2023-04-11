@@ -1,8 +1,8 @@
 <h2 class="section-heading my-5">
-  <span class="section-heading-upper">Requests per Minutes </span>
+  <span class="section-heading-upper">Offers received per Day </span>
 </h2>
-<%= bar_chart @daily_requests, ytitle: "# Requests", colors: ["#E39D2A"] %>
+<%= column_chart @daily_requests,xtitle: "Days", ytitle: "# Requests", colors: ["#E39D2A"] %>
 <h2 class="section-heading my-5">
-  <span class="section-heading-upper">Monthly Completed Swaps</span>
+  <span class="section-heading-upper">Sended offers have been accepted per Day</span>
 </h2>
-<%= line_chart @daily_completed_swaps, ytitle: "# Swaps", colors: ["E39D2A"] %>
+<%= column_chart @daily_completed_swaps, xtitle: "Days", ytitle: "# Swaps", colors: ["#E39D2A"] %>
