@@ -11660,9 +11660,28 @@ body {
       rgba(224, 215, 183, 0.3)
     ),
     image-url("/assets/bg.jpg");
-  background-attachment: fixed !important;
-  background-position: center !important;
-  background-size: cover !important;
+    background-attachment: fixed;
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+@media(max-width: 768px) {
+  body {
+    background-size: cover;
+  }
+  input[type=file] {
+    max-height: 50px;
+    white-space: nowrap;
+  }
+  
+  input[type=file]::-webkit-file-upload-button {
+    font-size: 11px;
+  }
+  input[type=file] {
+    max-height: 100px; /* ajusta la altura máxima según tus necesidades */
+    overflow: hidden;
+  }
 }
 
 p {

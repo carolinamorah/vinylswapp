@@ -1,45 +1,45 @@
 <%= form_with(model: profile, local: true) do |form| %>
-  <% if profile.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
+	<% if profile.errors.any? %>
+		<div id="error_explanation">
+		<h2><%= pluralize(profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
 
-      <ul>
-      <% profile.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+		<ul>
+		<% profile.errors.full_messages.each do |message| %>
+			<li><%= message %></li>
+		<% end %>
+		</ul>
+		</div>
+	<% end %>
 
-  <div class="container">
-    <div class="field">
-      <%= form.label :avatar %><br/>
-      <%= form.file_field :avatar %>
-    </div>
+	<div class="container">
+		<div class="field">
+			<%= form.label :avatar %><br/>
+			<%= form.file_field :avatar %>
+		</div>
 
-    <div class="field">
-      <%= form.hidden_field :user_id%>
-    </div>
-    
-    <div class="field">
-      <%= form.label :bio %><br/>
-      <%= form.text_area :bio, placeholder:"Ej: Intercambio por punk..." %>
-    </div>
-   
-    <div class="field">
-      <%= form.label :state %><br/>
-      <select id="regiones" class="<%= form.text_field :state %>"></select>
-    </div>
+		<div class="field">
+			<%= form.hidden_field :user_id%>
+		</div>
+		
+		<div class="field">
+			<%= form.label :bio %><br/>
+			<%= form.text_area :bio, placeholder:"Ej: Intercambio por punk..." %>
+		</div>
+		
+		<div class="field">
+			<%= form.label :state %><br/>
+			<select id="regiones" style="width: 200px;" class="<%= form.text_field :state %>"></select>
+		</div>
 
-    <div class="field">
-      <%= form.label :municipality %><br/>
-      <select id="comunas" class="<%= form.text_field :municipality %>"></select>
-    </div>
+		<div class="field">
+			<%= form.label :municipality %><br/>
+			<select id="comunas" class="<%= form.text_field :municipality %>"></select>
+		</div>
 
-    <div class="actions">
-      <%= form.submit class: "btn btn-outline-dark btn-sm"%>
-    </div>
-  </div>
+		<div class="actions">
+			<%= form.submit class: "btn btn-outline-dark btn-sm"%>
+		</div>
+	</div>
 <% end %>
 
 <script>

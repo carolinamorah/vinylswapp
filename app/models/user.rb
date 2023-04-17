@@ -2,7 +2,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: %i[google_oauth2]
+        :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: %i[google_oauth2]
 
   has_many :user_ids, class_name: 'Offer', foreign_key: :user_id, dependent: :destroy
   has_many :owner_ids, class_name: 'Offer', foreign_key: :owner_id, dependent: :destroy
@@ -27,8 +27,8 @@ class User < ApplicationRecord
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
       user.password = Devise.friendly_token[0,20]
-      user.collectionist_name = auth.info.collectionist_name   # assuming the user model has a name  
+      #user.collectionist_name = auth.info.collectionist_name   # assuming the user model has a name  
     end
   end
-   
+  
 end

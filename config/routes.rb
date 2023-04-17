@@ -21,18 +21,17 @@ Rails.application.routes.draw do
   resources :user, :only => [:index, :edit] do
     resources :offers, :only => [:destroy]
   end
- 
   
-    devise_for :users, controllers: {
-      sessions: 'users/sessions',
-      registrations: 'users/registrations',
-      omniauth_callbacks: 'users/omniauth_callbacks'
-    }
+  devise_for :users, controllers: {
+    sessions: 'users/sessions',
+    registrations: 'users/registrations',
+    omniauth_callbacks: 'users/omniauth_callbacks'
+  }
 
-    devise_scope :user do  
-      get '/users/sign_out' => 'devise/sessions#destroy'     
-    end
-  
+  devise_scope :user do  
+    get '/users/sign_out' => 'devise/sessions#destroy'     
+  end
+
 
   get "offers_list", to: "home#offers_list"
   get "dashboard", to: "home#dashboard"
