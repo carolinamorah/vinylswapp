@@ -36,7 +36,7 @@ Los trueques se llevan a cabo por medio del envío de solicitudes junto con una 
 ### Integración
 
 La aplicación cuenta con un un dashboard para los coleccionistas con chartkick, donde pueden ver indicadores de las ofertas que han recibido y los trueques que han concretado.
-Los usuarios pueden loguearse con su correo de gmail (google_oauth2)
+- Los usuarios pueden loguearse con su correo de gmail (google_oauth2)
 
 ### Niveles de usuario
 
