@@ -29,3 +29,27 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 });
 
 
+document.addEventListener("turbolinks:load", function() {
+  const scrollToTopBtn = document.querySelector("#scroll-to-top-btn");
+
+  function toggleScrollButton() {
+    if (window.scrollY > 300) {
+      scrollToTopBtn.style.display = "block";
+    } else {
+      scrollToTopBtn.style.display = "none";
+    }
+  }
+
+  function scrollToTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  }
+
+  window.addEventListener("scroll", toggleScrollButton);
+
+  scrollToTopBtn.addEventListener("click", scrollToTop);
+
+});
+

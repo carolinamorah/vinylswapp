@@ -15,12 +15,15 @@
 //});
 
 
-
+// Activa el dropdown con buscador de select2
 $(document).ready(function() {
    $('#vinyl_categories').select2();
    multiple:true
 });
 
+// Crea un scrollButtonToTop
 
 
- 
+
+
+

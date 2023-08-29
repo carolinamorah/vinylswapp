@@ -11969,6 +11969,24 @@ hr {
   right: 0;
 }
 
+#scroll-to-top-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #e6a756;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  padding: 10px 16px 4px 16px;
+  cursor: pointer;
+  display: none;
+  transition: opacity 0.4s, visibility 0.4s;
+}
+
+#scroll-to-top-btn:hover {
+  background-color: #cf964d;
+}
+
 
 
 
