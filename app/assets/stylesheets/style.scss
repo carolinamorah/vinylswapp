@@ -11979,8 +11979,9 @@ hr {
   border-radius: 50%;
   padding: 10px 16px 4px 16px;
   cursor: pointer;
-  display: none;
+  display:none;
   transition: opacity 0.4s, visibility 0.4s;
+  z-index: 1;
 }
 
 #scroll-to-top-btn:hover {
